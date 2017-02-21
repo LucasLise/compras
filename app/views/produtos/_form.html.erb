@@ -1,0 +1,9 @@
+<%= simple_form_for @produto do |f| %>
+  <%= f.input :descricao %>
+  <%= f.input :preco %>
+  <%= f.input :imagem, as: :file %><br/>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                produtos_path, :class => 'btn btn-default' %>
+<% end %>

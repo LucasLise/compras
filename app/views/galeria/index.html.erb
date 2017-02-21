@@ -1,0 +1,14 @@
+<div class="row panel panel-info">
+  <div class="panel-heading">Produtos</div>
+  <div class="panel-body" align = 'center'>
+    <%@produtos.each do |produto|%>
+        <div class="col-md-3">
+        <br><%= link_to image_tag produto.imagem.url(:thumb), class: "img-thumbnail", style: 'width: 130px; height: 100px' %><br>
+          <%= produto.descricao %></br>
+          <a class = "bg-success"><%= produto.preco%></a><br>
+          <%= link_to 'Adicionar ao Carrinho', carrinho_adiciona_produto_carrinho_path(produto.id), method: :post, class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart"%>
+        </div>
+    <%end%>
+  </div>
+  <%= will_paginate @produtos, renderer: BootstrapPagination::Rails %>
+</div>

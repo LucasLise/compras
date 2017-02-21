@@ -1,0 +1,9 @@
+<div class="row">
+  <%@produtos.each do |produto|%>
+      <div class="col-md-3">
+        <%= image_tag produto.imagem.url(:thumb)%></br>
+        <%= produto.descricao %></br>
+        <%= produto.preco %></br>
+      </div>
+  <%end%>
+</div>
