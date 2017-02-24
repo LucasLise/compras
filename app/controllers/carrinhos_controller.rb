@@ -1,17 +1,35 @@
 class CarrinhosController < ApplicationController
+  before_action :authenticate_user!
+  helper_method :valor_item, :valor_total
 
   def index
-    @produtos = Produto.where(id: session[:lista_produtos])
-    #@produtos = Produto.where(id: 12)
-    #@produtos = Produto.all
+    if params[:quantidade_atual]
+      carrinho_atual.itens_carrinho.update(147, quantidade: params[:quantidade_atual])
+      carrinho_atual
+    end
   end
 
   def adiciona_produto_carrinho
-     if !session[:lista_produtos]
-        session[:lista_produtos] = []
-     end
-     session[:lista_produtos] << params[:produto_id]
-     redirect_to galeria_index_path
+    produto = Produto.find(params[:produto_id])
+    if carrinho_atual.itens_carrinho.exists?(produto: produto)
+      item_atual = carrinho_atual.itens_carrinho.find_by(produto: produto)
+      item_atual.increment!(:quantidade, 1)
+    else
+      carrinho_atual.itens_carrinho.create(produto: produto, quantidade: 1)
+      redirect_to galeria_index_path
+    end
+  end
+
+  def valor_item(valor_unitario, preco)
+     valor_unitario * preco
+  end
+
+  def valor_total
+    total = 0
+    carrinho_atual.itens_carrinho.each do |item_carrinho|
+      total += item_carrinho.produto.preco * item_carrinho.quantidade
+    end
+    total
   end
 
 end

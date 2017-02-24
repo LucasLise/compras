@@ -15,11 +15,18 @@
             <ul class="nav navbar-nav pull-right">
               <li> <%= link_to "Home", galeria_index_path %></li>
               <li><%= link_to "Produtos", produtos_path%></li>
-              <li><%= link_to "Carrinho", carrinhos_path%></li>
+              <li><%= link_to "Categorias", new_categoria_path	%></li>
+              <%if !user_signed_in?%>
+                <li><%= link_to "Log in", user_session_path%></li>
+              <%else%>
+                <li role="presentation"><a href="/carrinhos">Carrinho <span class="badge"><%= "(#{carrinho_atual.itens_carrinho.count})" %></span></a></li>
+                <li><%= link_to "Log out", destroy_user_session_path, method: 'delete' %></li>
+              <%end%>
             </ul>
           </div>
       </div>
     </div></br></br></br>
+
     <%= yield%>
   </body>
 </html>

@@ -16,4 +16,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'imagem', 'imagens'
   inflect.irregular 'galeria', 'galerias'
   inflect.irregular 'carrinho', 'carrinhos'
+  inflect.irregular 'item_carrinho', 'itens_carrinho'
+  inflect.irregular 'categoria', 'categorias'
 end

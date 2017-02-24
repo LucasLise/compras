@@ -1,0 +1,25 @@
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Descricão</th>
+        <th>Valor Unitário</th>
+        <th>Quantidade</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% carrinho_atual.itens_carrinho.each do |item_carrinho| %>
+        <tr>
+          <td><%= image_tag(item_carrinho.produto.imagem.url(:thumb))%></td>
+          <td><%= item_carrinho.produto.descricao %></td>
+          <td><%= number_to_currency(item_carrinho.produto.preco) %></td>
+          <td><%= number_field_tag '',nil, min: 1, max: item_carrinho.produto.quantidade, value: item_carrinho.quantidade, style: 'width: 50px', class: 'quantidade' %></td>
+          <td><%= number_to_currency valor_item(item_carrinho.quantidade, item_carrinho.produto.preco)%></td>
+          <td><span> <%= link_to '', item_carrinho_path(item_carrinho.id), method: 'delete', class: 'glyphicon glyphicon-trash', remote: true%></span></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h3 align = "right"><span class="label label-default">Total: <%= number_to_currency valor_total %></span></h3>
