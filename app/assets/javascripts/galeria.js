@@ -4,8 +4,14 @@ $(document).on("turbolinks:load", function(){
     $('#produtos').load('/galeria?ordem=' + ordem + ' #produtos');
   });
 
-  $('#categorias').change(function(){
-    var buscar = $('#categorias').val();
+
+  $('.categorias').click(function(){
+    //alert('asdas');
+    //$(this).fadeOut('slow');
+    //var buscar = $(this).val();
+    alert($(this).val());
+
+    alert(buscar);
     $('#produtos').load('/galeria?buscar=' + buscar + ' #produtos');
   });
 

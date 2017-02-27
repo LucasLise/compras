@@ -1,19 +1,25 @@
 <div class="row panel panel-info">
   <div class="panel-heading">
-    <%= search_form_for @q, remote: true, url: galeria_index_path do |f| %>
-      <%= f.search_field :descricao_cont, placeholder: 'Pesquisar Produto', style: 'width: 50%'%>
-      <%= f.submit%>
-      <div align='right' >
-        <%=  select_tag "categorias", options_from_collection_for_select(Categoria.all, 'id', 'descricao', 1), include_blank: 'Categorias...', class: 'btn btn-info'%>
-
-        <%= select_tag "ordenacao",
-         raw("<option value='crescente'>Menor Preço</option><option value='decrescente'>Maior Preço</option>"), include_blank: "Todos", class: 'btn btn-info'%>
-     </div>
-    <% end %>
+    <div class="navbar-form navbar-left">
+      <%= search_form_for @q, remote: true, url: galeria_index_path do |f| %>
+        <%= f.search_field :descricao_cont, placeholder: 'Pesquisar Produto', class: 'form-control', style: 'width: 400px' %>
+        <button type="submit" class="btn btn-info">Pesquisar</button>
+      <% end %>
+    </div><br>
+    <div align='right' >
+      <%= select_tag "ordenacao",
+        raw("<option value='crescente'>Menor Preço</option><option value='decrescente'>Maior Preço</option>"), include_blank: "Todos", class: 'btn btn-info'%>
+    </div>
   </div>
 
   <div class="panel-body" align='center' id='produtos'>
-      <%= render partial:'produtos'%>
+    <div align='left'>
+      <% todas_categorias.each do |categoria| %>
+          <a class="label label-danger categorias" value="<%= categoria.id %>" ><%= categoria.descricao %></a>
+      <% end %>
+    </div><br>
+
+    <%= render partial:'produtos'%>
   </div>
   <%= will_paginate @produtos, renderer: BootstrapPagination::Rails %>
 </div>
