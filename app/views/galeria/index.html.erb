@@ -10,15 +10,12 @@
       <%= select_tag "ordenacao",
         raw("<option value='crescente'>Menor Preço</option><option value='decrescente'>Maior Preço</option>"), include_blank: "Todos", class: 'btn btn-info'%>
     </div>
+    <% todas_categorias.each do |categoria| %>
+        <a class="label label-danger categorias" value="<%= categoria.id %>" ><%= categoria.descricao %></a>
+    <% end %>
   </div>
 
   <div class="panel-body" align='center' id='produtos'>
-    <div align='left'>
-      <% todas_categorias.each do |categoria| %>
-          <a class="label label-danger categorias" value="<%= categoria.id %>" ><%= categoria.descricao %></a>
-      <% end %>
-    </div><br>
-
     <%= render partial:'produtos'%>
   </div>
   <%= will_paginate @produtos, renderer: BootstrapPagination::Rails %>

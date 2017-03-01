@@ -4,7 +4,8 @@ class CarrinhosController < ApplicationController
 
   def index
     if params[:quantidade_atual]
-      carrinho_atual.itens_carrinho.update(147, quantidade: params[:quantidade_atual])
+      params[:id_item]
+      carrinho_atual.itens_carrinho.update(3, quantidade: params[:quantidade_atual])
       carrinho_atual
     end
   end

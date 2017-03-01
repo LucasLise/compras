@@ -6,12 +6,7 @@ $(document).on("turbolinks:load", function(){
 
 
   $('.categorias').click(function(){
-    //alert('asdas');
-    //$(this).fadeOut('slow');
-    //var buscar = $(this).val();
-    alert($(this).val());
-
-    alert(buscar);
+    var buscar = $(this).text();
     $('#produtos').load('/galeria?buscar=' + buscar + ' #produtos');
   });
 
