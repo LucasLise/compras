@@ -16,6 +16,8 @@
               <li> <%= link_to "Home", galeria_index_path %></li>
               <li><%= link_to "Produtos", produtos_path%></li>
               <li><%= link_to "Categorias", new_categoria_path	%></li>
+              <li><%= link_to "Meus Pedidos", pedidos_path	%></li>
+
               <%if !user_signed_in?%>
                 <li><%= link_to "Log in", user_session_path%></li>
               <%else%>
