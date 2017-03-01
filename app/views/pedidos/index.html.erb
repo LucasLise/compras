@@ -1,0 +1,31 @@
+<%cont = 0%>
+<% current_user.pedidos.reverse.each do |pedido| %>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3>Pedido <%= current_user.pedidos.count - cont %> </h3>
+      <%cont+=1%>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Descricão</th>
+          <th>Valor Unitário</th>
+          <th>Quantidade</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pedido.itens_pedido.each do |item_pedido| %>
+          <tr>
+            <td><%= image_tag(item_pedido.produto.imagem.url(:thumb))%></td>
+            <td><%= item_pedido.produto.descricao %></td>
+            <td><%= number_to_currency(item_pedido.produto.preco) %></td>
+            <td><%= item_pedido.quantidade %></td>
+            <td><%= number_to_currency valor_item(item_pedido.quantidade, item_pedido.produto.preco)%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+<%end%>
