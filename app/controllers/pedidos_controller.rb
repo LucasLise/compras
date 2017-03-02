@@ -1,4 +1,5 @@
 class PedidosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
   helper_method :valor_total_pedido
 

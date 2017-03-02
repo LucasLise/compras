@@ -1,4 +1,5 @@
 class ItensPedidoController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item_pedido, only: [:show, :edit, :update, :destroy]
 
   # GET /itens_pedido
