@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :itens_pedido
-  resources :pedidos do
+
+  resources :pedidos, only: :index do
     collection do
       post :criar_pedido
     end
   end
+
   resources :categorias
+
   devise_for :users
 
   resources :produtos

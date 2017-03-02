@@ -6,25 +6,30 @@ class CategoriasController < ApplicationController
   # GET /categorias.json
   def index
     @categorias = Categoria.all
+    authorize @categorias
   end
 
   # GET /categorias/1
   # GET /categorias/1.json
   def show
+    authorize @categoria
   end
 
   # GET /categorias/new
   def new
     @categoria = Categoria.new
+    authorize @categoria
   end
 
   # GET /categorias/1/edit
   def edit
+    authorize @categoria
   end
 
   # POST /categorias
   # POST /categorias.json
   def create
+
     @categoria = Categoria.new(categoria_params)
 
     respond_to do |format|
@@ -36,6 +41,7 @@ class CategoriasController < ApplicationController
         format.json { render json: @categoria.errors, status: :unprocessable_entity }
       end
     end
+    authorize @categoria
   end
 
   # PATCH/PUT /categorias/1
@@ -50,6 +56,7 @@ class CategoriasController < ApplicationController
         format.json { render json: @categoria.errors, status: :unprocessable_entity }
       end
     end
+    authorize @categoria
   end
 
   # DELETE /categorias/1
@@ -60,6 +67,7 @@ class CategoriasController < ApplicationController
       format.html { redirect_to categorias_url, notice: 'Categoria was successfully destroyed.' }
       format.json { head :no_content }
     end
+    authorize @categoria
   end
 
   private

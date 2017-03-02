@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+  protect_from_forgery
+
   protect_from_forgery with: :exception
   helper_method :produtos_carrinho, :carrinho_atual, :valor_item
 
@@ -15,6 +18,15 @@ class ApplicationController < ActionController::Base
 
   def valor_item(valor_unitario, preco)
      valor_unitario * preco
+  end
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  private
+
+  def user_not_authorized
+    #flash[:notice] = "Você não tem permição para esta ação"
+    redirect_to(request.referrer || root_path)
   end
 
 end

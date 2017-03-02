@@ -6,20 +6,24 @@ class ProdutosController < ApplicationController
   # GET /produtos.json
   def index
     @produtos = Produto.all
+    authorize @produtos
   end
 
   # GET /produtos/1
   # GET /produtos/1.json
   def show
+    authorize @produto
   end
 
   # GET /produtos/new
   def new
     @produto = Produto.new
+    authorize @produto
   end
 
   # GET /produtos/1/edit
   def edit
+    authorize @produto
   end
 
   # POST /produtos
@@ -36,6 +40,7 @@ class ProdutosController < ApplicationController
         format.json { render json: @produto.errors, status: :unprocessable_entity }
       end
     end
+    authorize @produto
   end
 
   # PATCH/PUT /produtos/1
@@ -50,6 +55,7 @@ class ProdutosController < ApplicationController
         format.json { render json: @produto.errors, status: :unprocessable_entity }
       end
     end
+    authorize @produto
   end
 
   # DELETE /produtos/1
@@ -60,6 +66,7 @@ class ProdutosController < ApplicationController
       format.html { redirect_to produtos_url, notice: 'Produto was successfully destroyed.' }
       format.json { head :no_content }
     end
+    authorize @produto
   end
 
   private
