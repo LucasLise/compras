@@ -1,5 +1,6 @@
 class CarrinhosController < ApplicationController
   before_action :authenticate_user!
+  helper_method :valor_total, :produtos_carrinho
 
   def index
     if params[:quantidade_atual]
@@ -18,6 +19,19 @@ class CarrinhosController < ApplicationController
       carrinho_atual.itens_carrinho.create(produto: produto, quantidade: 1)
       redirect_to galeria_index_path
     end
+  end
+
+
+  def valor_total
+    total = 0
+    carrinho_atual.itens_carrinho.each do |item_carrinho|
+      total += item_carrinho.produto.preco * item_carrinho.quantidade
+    end
+    total
+  end
+
+  def produtos_carrinho
+    Produto.all
   end
 
 end

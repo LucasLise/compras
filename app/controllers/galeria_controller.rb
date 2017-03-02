@@ -1,5 +1,7 @@
 class GaleriaController < ApplicationController
 
+  helper_method :todas_categorias
+
   def index
     @q = Produto.ransack(params[:q])
     @produtos = @q.result(distinct: true)
@@ -16,4 +18,9 @@ class GaleriaController < ApplicationController
       @produtos = @produtos.where(categoria_id: @categoria.id)
     end
   end
+
+  def todas_categorias
+    Categoria.all
+  end
+
 end

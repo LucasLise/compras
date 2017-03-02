@@ -1,5 +1,14 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
+  helper_method :valor_total_pedido
+
+  def valor_total_pedido(pedido)
+    total = 0
+    pedido.itens_pedido.each do |item_pedido|
+      total += item_pedido.produto.preco * item_pedido.quantidade
+    end
+    total
+  end
 
   def criar_pedido
     pedido = Pedido.create(user_id: current_user.id)
