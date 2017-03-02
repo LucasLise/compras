@@ -1,14 +1,1 @@
-var quantErros = <%= @item_carrinho.errors.count %>
-
-if (quantErros > 0) {
-$('.navbar').html('<div class="alert alert-danger" role="alert" align = "center"> Não foi possível remover</div>');
-}else{
-  $('.navbar').html('<div class="alert alert-success" role="alert" align = "center"> Removido com sucesso</div>');
-}
-
-$('.alert').fadeOut(7000);
-$('.navbar').fadeIn('slow');
-
-$('glyphicon glyphicon-trash').click(function(){
-  
-});
+$('#carrinho').html('<%= j render "carrinhos/carrinhos" %>')

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301165648) do
+ActiveRecord::Schema.define(version: 20170302124540) do
 
   create_table "carrinhos", force: :cascade do |t|
     t.integer  "user_id"
@@ -41,16 +41,19 @@ ActiveRecord::Schema.define(version: 20170301165648) do
     t.integer  "pedido_id"
     t.integer  "produto_id"
     t.integer  "quantidade"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.decimal  "valor_unitario"
+    t.decimal  "valor_total"
     t.index ["pedido_id"], name: "index_itens_pedido_on_pedido_id"
     t.index ["produto_id"], name: "index_itens_pedido_on_produto_id"
   end
 
   create_table "pedidos", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.decimal  "valor_total"
     t.index ["user_id"], name: "index_pedidos_on_user_id"
   end
 

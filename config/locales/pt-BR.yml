@@ -4,3 +4,5 @@ pt-BR:
       produto:
         descricao: Descrição
         preco: Preço
+      categoria:
+        descricao: Descrição

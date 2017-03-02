@@ -21,7 +21,6 @@ class CarrinhosController < ApplicationController
     end
   end
 
-
   def valor_total
     total = 0
     carrinho_atual.itens_carrinho.each do |item_carrinho|

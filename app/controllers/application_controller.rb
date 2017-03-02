@@ -4,12 +4,10 @@ class ApplicationController < ActionController::Base
 
   def carrinho_atual
     if current_user
-      if Carrinho.exists?(current_user.id)
-        Carrinho.find(current_user.id)
+      if Carrinho.exists?(user_id: current_user.id)
+        Carrinho.find_by(user_id: current_user.id)
       else
-        carrinho = Carrinho.new
-        carrinho.user_id = current_user.id
-        carrinho.save
+        Carrinho.create(user_id: current_user.id)
         Carrinho.last
       end
     end

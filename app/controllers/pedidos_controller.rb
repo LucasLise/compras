@@ -2,21 +2,32 @@ class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
   helper_method :valor_total_pedido
 
-  def valor_total_pedido(pedido)
+  def criar_pedido
+      pedido = Pedido.create(user_id: current_user.id, valor_total: valor_total_pedido)
+      carrinho_atual.itens_carrinho.each do |item_carrinho|
+      valor_total_item = item_carrinho.quantidade * item_carrinho.produto.preco
+      pedido.itens_pedido.create(produto_id: item_carrinho.produto_id, quantidade: item_carrinho.quantidade,
+                                 valor_unitario: item_carrinho.produto.preco, valor_total: valor_total_item)
+    end
+    atualizar_produto_estoque
+    carrinho_atual.destroy
+    redirect_to pedidos_path
+  end
+
+  def valor_total_pedido
     total = 0
-    pedido.itens_pedido.each do |item_pedido|
-      total += item_pedido.produto.preco * item_pedido.quantidade
+    carrinho_atual.itens_carrinho.each do |item_carrinho|
+      total += item_carrinho.produto.preco * item_carrinho.quantidade
     end
     total
   end
 
-  def criar_pedido
-    pedido = Pedido.create(user_id: current_user.id)
+  def atualizar_produto_estoque
     carrinho_atual.itens_carrinho.each do |item_carrinho|
-      pedido.itens_pedido.create(produto_id: item_carrinho.produto_id, quantidade: item_carrinho.quantidade)
+      quantidade_produto = item_carrinho.produto.quantidade
+      quantidade_carrinho = item_carrinho.quantidade
+      item_carrinho.produto.update(quantidade: quantidade_produto - quantidade_carrinho)
     end
-    ItemCarrinho.delete_all
-    redirect_to pedidos_path
   end
 
   # GET /pedidos
