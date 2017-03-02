@@ -5,7 +5,7 @@ class GaleriaController < ApplicationController
   def index
     @q = Produto.ransack(params[:q])
     @produtos = @q.result(distinct: true)
-    @produtos = @produtos.paginate(page: params[:page], per_page: 40 )
+    @produtos = @produtos.paginate(page: params[:page], per_page: 9 )
 
     if params[:ordem] == 'crescente'
       @produtos = @produtos.order(preco: :asc)

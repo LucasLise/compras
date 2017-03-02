@@ -18,5 +18,7 @@
   <div class="panel-body" align='center' id='produtos'>
     <%= render partial:'produtos'%>
   </div>
-  <%= will_paginate @produtos, renderer: BootstrapPagination::Rails %>
+  <div align="center">
+    <%= will_paginate @produtos, renderer: BootstrapPagination::Rails%>
+  </div>
 </div>
