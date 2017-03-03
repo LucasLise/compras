@@ -1,8 +1,8 @@
 <%= simple_form_for @produto do |f| %>
 
   <%= f.input :descricao %>
-  <%= f.input :preco %>
-  <%= f.input :quantidade %>
+  <%= f.input :preco, input_html: {min:'0'} %>
+  <%= f.input :quantidade, input_html: {min:'0'} %>
   <%= f.association :categoria %>
   <%= f.input :imagem, as: :file %><br/>
 
