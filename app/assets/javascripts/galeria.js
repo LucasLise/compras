@@ -6,7 +6,7 @@ $(document).on("turbolinks:load", function(){
 
 
   $('.categorias').click(function(){
-    var buscar_categoria = $(this).text();
+    var buscar_categoria = $(this).data().id;
     $('#produtos').load('/galeria?buscar_categoria=' + buscar_categoria + ' #produtos');
   });
 

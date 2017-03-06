@@ -14,7 +14,7 @@ class GaleriaController < ApplicationController
     end
 
     if params[:buscar_categoria]
-      @categoria = Categoria.find_by(params[:buscar_categoria])
+      @categoria = Categoria.find(params[:buscar_categoria])
       @produtos = @produtos.where(categoria_id: @categoria.id)
     end
 
