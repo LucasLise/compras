@@ -4,11 +4,11 @@ class PedidosController < ApplicationController
   helper_method :valor_total_pedido
 
   def criar_pedido
-      pedido = Pedido.create(user_id: current_user.id, valor_total: valor_total_pedido)
+      pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido)
       carrinho_atual.itens_carrinho.each do |item_carrinho|
-      valor_total_item = item_carrinho.quantidade * item_carrinho.produto.preco
-      pedido.itens_pedido.create(produto_id: item_carrinho.produto_id, quantidade: item_carrinho.quantidade,
-                                 valor_unitario: item_carrinho.produto.preco, valor_total: valor_total_item)
+      item_pedido = pedido.itens_pedido.new(produto: item_carrinho.produto, quantidade: item_carrinho.quantidade)
+      item_pedido.calcula_valores
+      item_pedido.save
     end
     atualizar_produto_estoque
     carrinho_atual.destroy

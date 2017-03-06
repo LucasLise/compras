@@ -15,6 +15,7 @@ class CarrinhosController < ApplicationController
     if carrinho_atual.itens_carrinho.exists?(produto: produto)
       item_atual = carrinho_atual.itens_carrinho.find_by(produto: produto)
       item_atual.increment!(:quantidade, 1)
+      redirect_to galeria_index_path
     else
       carrinho_atual.itens_carrinho.create(produto: produto, quantidade: 1)
       redirect_to galeria_index_path

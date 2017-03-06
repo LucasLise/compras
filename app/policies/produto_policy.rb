@@ -20,10 +20,6 @@ class ProdutoPolicy < ApplicationPolicy
     user.admin?
   end
 
-  def show?
-    user.admin?
-  end
-
   def index?
     user.admin?
   end
