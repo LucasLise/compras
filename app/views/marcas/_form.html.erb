@@ -1,7 +1,7 @@
-<%= simple_form_for @categoria do |f| %>
+<%= simple_form_for @marca do |f| %>
   <%= f.input :descricao %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                categorias_path, :class => 'btn btn-default' %>
+                marcas_path, :class => 'btn btn-default' %>
 <% end %>

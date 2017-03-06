@@ -1,4 +1,5 @@
 class Produto < ApplicationRecord
+  belongs_to :marca
   belongs_to :item_carrinho
   belongs_to :categoria
   has_many :itens_carrinho

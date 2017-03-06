@@ -1,6 +1,6 @@
 class GaleriaController < ApplicationController
 
-  helper_method :todas_categorias
+  helper_method :todas_categorias, :todas_marcas
 
   def index
     @q = Produto.ransack(params[:q])
@@ -13,14 +13,23 @@ class GaleriaController < ApplicationController
       @produtos = @produtos.order(preco: :desc)
     end
 
-    if params[:buscar]
-      @categoria = Categoria.find_by(descricao: params[:buscar])
+    if params[:buscar_categoria]
+      @categoria = Categoria.find_by(params[:buscar_categoria])
       @produtos = @produtos.where(categoria_id: @categoria.id)
+    end
+
+    if params[:buscar_marca]
+      @marca = Marca.find(params[:buscar_marca])
+      @produtos = @produtos.where(marca_id: @marca.id)
     end
   end
 
   def todas_categorias
     Categoria.all
+  end
+
+  def todas_marcas
+    Marca.all
   end
 
 end

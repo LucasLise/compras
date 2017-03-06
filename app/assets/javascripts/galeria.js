@@ -6,8 +6,13 @@ $(document).on("turbolinks:load", function(){
 
 
   $('.categorias').click(function(){
-    var buscar = $(this).text();
-    $('#produtos').load('/galeria?buscar=' + buscar + ' #produtos');
+    var buscar_categoria = $(this).text();
+    $('#produtos').load('/galeria?buscar_categoria=' + buscar_categoria + ' #produtos');
+  });
+
+  $('.marcas').click(function(){
+    var buscar_marca = $(this).data().id;
+    $('#produtos').load('/galeria?buscar_marca=' + buscar_marca + ' #produtos');
   });
 
 });

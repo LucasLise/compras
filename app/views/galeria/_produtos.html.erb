@@ -1,7 +1,10 @@
 <%@produtos.each do |produto|%>
     <div class="col-sm-6 col-md-4 thumbnail">
       <br><%= link_to image_tag produto.imagem.url(:thumb), class: "img-thumbnail", style: 'height: 90px' %><br>
-      <%= produto.descricao %></br>
+      <span class="descricao-produto">
+        <%= produto.descricao %>
+      </span>
+      </br>
       <strong><%= number_to_currency(produto.preco) %></strong><br  >
       <%if produto.quantidade.to_i > 0%>
         <span class="label label-success"><%= "#{produto.quantidade} disponíveis"%></span></br>

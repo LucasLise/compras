@@ -10,9 +10,21 @@
       <%= select_tag "ordenacao",
         raw("<option value='crescente'>Menor Preço</option><option value='decrescente'>Maior Preço</option>"), include_blank: "Todos", class: 'btn btn-info'%>
     </div>
-    <% todas_categorias.each do |categoria| %>
-        <a class="label label-danger categorias" value="<%= categoria.id %>" ><%= categoria.descricao %></a>
-    <% end %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Categorias</h5>
+        <% todas_categorias.each do |categoria| %>
+            <a class="label label-danger categorias" value="<%= categoria.id %>" ><%= categoria.descricao %></a>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <h5>Marcas</h5>
+        <% todas_marcas.each do |marca| %>
+            <a class="label label-danger marcas" data-id="<%= marca.id %>" ><%= marca.descricao %></a>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="panel-body" align='center' id='produtos'>

@@ -1,19 +1,19 @@
-<%- model_class = Categoria -%>
+<%- model_class = Marca -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
-  <dd><%= @categoria.descricao %></dd>
+  <dd><%= @marca.descricao %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              categorias_path, :class => 'btn btn-default'  %>
+              marcas_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_categoria_path(@categoria), :class => 'btn btn-default' %>
+              edit_marca_path(@marca), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              categoria_path(@categoria),
+              marca_path(@marca),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>

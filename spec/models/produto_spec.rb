@@ -9,6 +9,7 @@ RSpec.describe Produto, type: :model do
       end
 
       it 'associações' do
+        expect(subject).to belong_to(:marca)
         expect(subject).to belong_to(:categoria)
         expect(subject).to have_many(:itens_carrinho)
         expect(subject).to have_many(:itens_pedido)
