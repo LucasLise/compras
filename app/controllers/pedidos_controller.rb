@@ -16,13 +16,14 @@ class PedidosController < ApplicationController
   end
 
   def criar_pedido
-      pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido)
-      carrinho_atual.itens_carrinho.each do |item_carrinho|
+    pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido)
+    carrinho_atual.itens_carrinho.each do |item_carrinho|
       item_pedido = pedido.itens_pedido.new(produto: item_carrinho.produto, quantidade: item_carrinho.quantidade)
       item_pedido.calcula_valores
       item_pedido.save
     end
     atualizar_produto_estoque
+    carrinho_atual.itens_carrinho.destroy_all
     carrinho_atual.destroy
     redirect_to pedidos_path
   end
