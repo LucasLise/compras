@@ -4,6 +4,12 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+
+ruby "4.0.0"
+
+
+gem 'pg', group: :production
+
 gem 'guard-rspec'
 
 gem "pundit"
