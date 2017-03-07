@@ -20,4 +20,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'categoria', 'categorias'
   inflect.irregular 'item_pedido', 'itens_pedido'
   inflect.irregular 'marca', 'marcas'
+  inflect.irregular 'unidade_federativa', 'unidades_federativas'
+  inflect.irregular 'cidade', 'cidades'
+  inflect.irregular 'enderecos', 'enderecos'
 end

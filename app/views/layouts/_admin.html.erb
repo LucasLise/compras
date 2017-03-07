@@ -1,0 +1,18 @@
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li> <%= link_to "Home", galeria_index_path %></li>
+            <li><%= link_to "Produtos", produtos_path%></li>
+            <li><%= link_to "Categorias", categorias_path	%></li>
+            <li><%= link_to "Marcas", marcas_path	%></li>
+            <li><%= link_to "Pedidos de Clientes", pedidos_path	%></li>
+            <%if !user_signed_in? %>
+              <li><%= link_to "Login", user_session_path%></li>
+            <%else%>
+              <li><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
+            <%end%>
+        </ul>
+      </div>
+  </div>
+</div><br><br>

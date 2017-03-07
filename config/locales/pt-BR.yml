@@ -4,5 +4,10 @@ pt-BR:
       produto:
         descricao: Descrição
         preco: Preço
+        created_at: 'Data de Criação'
       categoria:
         descricao: Descrição
+        created_at: 'Data de Criação'
+      marca:
+        descricao: Descrição
+        created_at: 'Data de Criação'
