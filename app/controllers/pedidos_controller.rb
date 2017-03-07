@@ -3,6 +3,18 @@ class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
   helper_method :valor_total_pedido
 
+  def todos_pedidos
+    if params[:ordem]
+      if params[:ordem] == 'recentes'
+          @pedidos = Pedido.all.reverse
+      else
+        @pedidos = Pedido.all
+      end
+    else
+      @pedidos = Pedido.all.reverse
+    end
+  end
+
   def criar_pedido
       pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido)
       carrinho_atual.itens_carrinho.each do |item_carrinho|

@@ -1,0 +1,40 @@
+<div align='right' >
+  <%= select_tag "recentes",
+    raw("<option value='recentes'>Mais recentes</option><option value='velhos'>Menos recentes</option>"), class: 'btn btn-info',
+                                                                                                            style: 'margin-left: 425px'%>
+</div><br>
+
+<div id="todos_pedidos">
+  <% @pedidos.each do |pedido| %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3>Pedido <%= pedido.id %> </h3>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Descricão</th>
+            <th>Valor Unitário</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% pedido.itens_pedido.each do |item_pedido| %>
+            <tr>
+              <td><%= image_tag(item_pedido.produto.imagem.url(:thumb))%></td>
+              <td><%= item_pedido.produto.descricao %></td>
+              <td><%= number_to_currency item_pedido.valor_unitario %></td>
+              <td><%= item_pedido.quantidade %></td>
+              <td><%= number_to_currency item_pedido.valor_total%></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+      <div align="right" style="margin-right: 1%">
+        <h3 style="display: inline-block" ><label class="label label-default">Total: <%= number_to_currency pedido.valor_total %></label></h3>
+      </div>
+    </div>
+  <%end%>
+</div>
