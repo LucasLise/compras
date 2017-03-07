@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :marca do
-    descricao "MyString"
+    descricao "HP"
   end
 end

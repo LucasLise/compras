@@ -7,7 +7,7 @@
       </br>
       <strong><%= number_to_currency(produto.preco) %></strong><br  >
       <%if produto.quantidade.to_i > 0%>
-        <span class="label label-success"><%= "#{produto.quantidade} disponíveis"%></span></br>
+        <span class="label label-success"><%= "disponível"%></span></br>
       <%else%>
         <span class="label label-danger"><%= "indisponível"%></span></br>
       <%end%>
