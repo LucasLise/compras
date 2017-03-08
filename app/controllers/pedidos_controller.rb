@@ -3,6 +3,10 @@ class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
   helper_method :valor_total_pedido
 
+
+  def finalizar_pedido
+  end
+
   def todos_pedidos
     if params[:ordem]
       if params[:ordem] == 'recentes'
@@ -16,7 +20,7 @@ class PedidosController < ApplicationController
   end
 
   def criar_pedido
-    pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido)
+    pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido, endereco: current_user.enderecos.last)
     carrinho_atual.itens_carrinho.each do |item_carrinho|
       item_pedido = pedido.itens_pedido.new(produto: item_carrinho.produto, quantidade: item_carrinho.quantidade)
       item_pedido.calcula_valores
@@ -112,6 +116,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:user_id)
+      params.require(:pedido).permit(:user_id, :endereco_id)
     end
 end

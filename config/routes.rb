@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :enderecos, only: [:new, :create]
   resources :marcas
 
   resources :pedidos, only: :index do
     collection do
+      get :finalizar_pedido
       post :criar_pedido
       get :todos_pedidos
     end

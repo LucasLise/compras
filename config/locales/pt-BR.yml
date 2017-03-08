@@ -13,3 +13,7 @@ pt-BR:
         created_at: 'Data de Criação'
       user:
         cpf: CPF
+      endereco:
+        numero: 'Número'
+        cep: 'CEP'
+        uf: 'UF'

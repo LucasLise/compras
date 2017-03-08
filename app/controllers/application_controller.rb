@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   protect_from_forgery with: :exception
-  helper_method :produtos_carrinho, :carrinho_atual, :valor_item
+  helper_method :produtos_carrinho, :carrinho_atual, :valor_item, :valor_total
 
   def carrinho_atual
     if current_user
@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
 
   def valor_item(valor_unitario, preco)
      valor_unitario * preco
+  end
+
+  def valor_total
+    total = 0
+    carrinho_atual.itens_carrinho.each do |item_carrinho|
+      total += item_carrinho.produto.preco * item_carrinho.quantidade
+    end
+    total
   end
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

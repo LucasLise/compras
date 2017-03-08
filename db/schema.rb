@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308121830) do
+ActiveRecord::Schema.define(version: 20170308193132) do
 
   create_table "carrinhos", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 20170308121830) do
     t.string   "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "enderecos", force: :cascade do |t|
+    t.string   "logradouro"
+    t.integer  "numero"
+    t.string   "complemento"
+    t.string   "bairro"
+    t.string   "cep"
+    t.string   "cidade"
+    t.string   "uf"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_enderecos_on_user_id"
   end
 
   create_table "itens_carrinho", force: :cascade do |t|
@@ -60,6 +74,8 @@ ActiveRecord::Schema.define(version: 20170308121830) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.decimal  "valor_total"
+    t.integer  "endereco_id"
+    t.index ["endereco_id"], name: "index_pedidos_on_endereco_id"
     t.index ["user_id"], name: "index_pedidos_on_user_id"
   end
 

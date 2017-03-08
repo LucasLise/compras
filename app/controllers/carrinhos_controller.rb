@@ -21,14 +21,6 @@ class CarrinhosController < ApplicationController
     end
   end
 
-  def valor_total
-    total = 0
-    carrinho_atual.itens_carrinho.each do |item_carrinho|
-      total += item_carrinho.produto.preco * item_carrinho.quantidade
-    end
-    total
-  end
-
   def produtos_carrinho
     Produto.all
   end

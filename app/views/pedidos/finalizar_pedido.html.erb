@@ -1,0 +1,38 @@
+<div class="jumbotron" style="background: skyblue;">
+  <h1>Ótima escolha!</h1>
+  <p>Obrigado por comprar em nosso site.</p>
+</div>
+<div align="center">
+  Progresso
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+    <span class="sr-only">40% Complete (success)</span>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Descricão</th>
+      <th>Valor Unitário</th>
+      <th>Quantidade</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% carrinho_atual.itens_carrinho.each do |item_carrinho| %>
+      <tr>
+        <td><%= image_tag(item_carrinho.produto.imagem.url(:thumb))%></td>
+        <td class="descricao_produto_carrinho"><%= item_carrinho.produto.descricao %></td>
+        <td><%= number_to_currency(item_carrinho.produto.preco) %></td>
+        <td><%= item_carrinho.quantidade %></td>
+        <td><%= number_to_currency valor_item(item_carrinho.quantidade, item_carrinho.produto.preco)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div align="right">
+  <%= link_to 'Finalizar Compra', criar_pedido_pedidos_path, method: :post, class: 'btn btn-info'%>
+</div>
