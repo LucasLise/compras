@@ -17,3 +17,5 @@ pt-BR:
         numero: 'Número'
         cep: 'CEP'
         uf: 'UF'
+        unidade_federativa: Unidade Federativa
+        municipio: Município
