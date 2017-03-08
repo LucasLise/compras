@@ -2,8 +2,15 @@
 <% current_user.pedidos.reverse.each do |pedido| %>
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3>Pedido <%= current_user.pedidos.count - cont %> </h3>
-      <%cont+=1%>
+      <div class="row">
+          <div class="col-md-4">
+            <h3>Pedido <%= current_user.pedidos.count - cont %> </h3>
+            <%cont+=1%>
+          </div>
+          <div class="col-md-4">
+            <h5>Endereco de entrega:</h5>
+          </div>
+      </div>
     </div>
     <table class="table table-striped">
       <thead>

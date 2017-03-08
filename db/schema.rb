@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308193132) do
+ActiveRecord::Schema.define(version: 20170308202221) do
 
   create_table "carrinhos", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,11 +31,13 @@ ActiveRecord::Schema.define(version: 20170308193132) do
     t.string   "complemento"
     t.string   "bairro"
     t.string   "cep"
-    t.string   "cidade"
-    t.string   "uf"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "user_id"
+    t.integer  "municipio_id"
+    t.integer  "unidade_federativa_id"
+    t.index ["municipio_id"], name: "index_enderecos_on_municipio_id"
+    t.index ["unidade_federativa_id"], name: "index_enderecos_on_unidade_federativa_id"
     t.index ["user_id"], name: "index_enderecos_on_user_id"
   end
 
@@ -69,6 +71,14 @@ ActiveRecord::Schema.define(version: 20170308193132) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "municipios", force: :cascade do |t|
+    t.string   "nome"
+    t.integer  "unidade_federativa_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["unidade_federativa_id"], name: "index_municipios_on_unidade_federativa_id"
+  end
+
   create_table "pedidos", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",  null: false
@@ -95,6 +105,13 @@ ActiveRecord::Schema.define(version: 20170308193132) do
     t.index ["categoria_id"], name: "index_produtos_on_categoria_id"
     t.index ["item_carrinho_id"], name: "index_produtos_on_item_carrinho_id"
     t.index ["marca_id"], name: "index_produtos_on_marca_id"
+  end
+
+  create_table "unidades_federativas", force: :cascade do |t|
+    t.string   "sigla",      limit: 2
+    t.string   "descricao"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: :cascade do |t|
