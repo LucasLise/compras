@@ -1,34 +1,34 @@
 <div class="row panel panel-info">
   <div class="panel-heading">
     <div class="row">
-      <div class="col-md-6">
-        <div class="navbar-form navbar-left">
+      <div class="col-md-12">
+        <div class="navbar-form navbar-left" >
           <%= search_form_for @q, remote: true, url: galeria_index_path do |f| %>
-            <%= f.search_field :descricao_cont, placeholder: 'Pesquisar Produto', class: 'form-control', style: 'width: 400px; margin-left: -16px' %>
+            <%= f.search_field :descricao_cont, placeholder: 'Pesquisar Produto', class: 'form-control', style: "min-width: 596px"%>
             <button type="submit" class="btn btn-info">Pesquisar</button>
           <% end %>
         </div>
       </div>
-      <div class="col-md-6 navbar-form">
-        <div align='right' >
-          <%= select_tag "ordenacao",
-            raw("<option value='crescente'>Menor Preço</option><option value='decrescente'>Maior Preço</option>"), include_blank: "Todos", class: 'btn btn-info',
-                                                                                                                    style: 'margin-left: 425px'%>
-        </div>
-      </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h5>Categorias</h5>
         <% todas_categorias.each do |categoria| %>
             <a class="label label-danger categorias" data-id="<%= categoria.id %>" ><%= categoria.descricao %></a>
         <% end %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h5>Marcas</h5>
         <% todas_marcas.each do |marca| %>
             <a class="label label-danger marcas" data-id="<%= marca.id %>" ><%= marca.descricao %></a>
         <% end %>
+      </div>
+      <div class="col-md-4">
+        <div align="right">
+          <h5>Ordenar por:</h5>
+          <%= select_tag "ordenacao",
+            raw("<option value='crescente'>Menor Preço</option><option value='decrescente'>Maior Preço</option>"), include_blank: "Todos", class: 'btn btn-info'%>
+        </div>
       </div>
     </div>
   </div>

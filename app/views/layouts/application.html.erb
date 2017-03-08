@@ -7,7 +7,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class = 'container'>
+  <body class="container">
     <% if current_user && current_user.admin? %>
       <%= render partial:'layouts/admin' %>
     <%elsif current_user && current_user.normal_user?%>

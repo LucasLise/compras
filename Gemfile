@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'jquery-inputmask-rails'
+
+gem 'binding_of_caller'
+
 gem 'pg', group: :production
 
 gem 'guard-rspec'

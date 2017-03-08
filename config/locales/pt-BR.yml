@@ -11,3 +11,5 @@ pt-BR:
       marca:
         descricao: Descrição
         created_at: 'Data de Criação'
+      user:
+        cpf: CPF
