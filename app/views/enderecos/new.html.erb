@@ -11,12 +11,24 @@
       <h3 style="display: inline-block"><span class="label label-default">Total: <%= number_to_currency valor_total %></span></h3>
     </div>
   </div>
+
   <div class="col-md-6">
-    <h1>Endereço</h1><hr>
-    <%if current_user.pedidos.count > 0%>
-      <%= render 'form', endereco: @endereco %>
-    <%else%>
-      <%= render 'form', endereco: @endereco %>
-    <%end%>
-  </div>
+    <span id="formulario_endereco">
+      <%if current_user.pedidos.count > 0%>
+          <div class="row">
+            <div class="col-md-9">
+              <h1>Endereço</h1>
+            </div>
+            <div class="col-md-3">
+              <h1>
+                <%= link_to 'Novo Endereço', new_endereco_path, remote: true, class: "btn btn-primary", id: "novo_endereco" %>
+              </h1>
+            </div>
+          </div>
+          <hr><%= render 'enderecos/ultimos_enderecos'%>
+      <%else%>
+          <%= render 'form', endereco: @endereco %>
+      <%end%>
+    </div>
+  </span>
 </div>

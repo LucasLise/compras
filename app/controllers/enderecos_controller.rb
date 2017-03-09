@@ -27,7 +27,7 @@ class EnderecosController < ApplicationController
     @endereco = Endereco.new(endereco_params)
     @endereco.user_id = current_user.id
       if @endereco.save
-        redirect_to finalizar_pedido_pedidos_path
+        redirect_to finalizar_pedido_pedidos_path(endereco: @endereco)
       else
         format.html { render :new }
         format.json { render json: @endereco.errors, status: :unprocessable_entity }

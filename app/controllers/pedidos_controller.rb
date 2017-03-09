@@ -5,6 +5,7 @@ class PedidosController < ApplicationController
 
 
   def finalizar_pedido
+    @endereco = params[:endereco]
   end
 
   def todos_pedidos
@@ -20,7 +21,7 @@ class PedidosController < ApplicationController
   end
 
   def criar_pedido
-    pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido, endereco: current_user.enderecos.last)
+    pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido, endereco_id: params[:endereco])
     carrinho_atual.itens_carrinho.each do |item_carrinho|
       item_pedido = pedido.itens_pedido.new(produto: item_carrinho.produto, quantidade: item_carrinho.quantidade)
       item_pedido.calcula_valores

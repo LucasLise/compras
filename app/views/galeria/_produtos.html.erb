@@ -8,11 +8,14 @@
       <strong><%= number_to_currency(produto.preco) %></strong><br  >
       <%if produto.quantidade.to_i > 0%>
         <span class="label label-success"><%= "disponível"%></span></br>
+        <%= link_to 'Adicionar ao Carrinho', adiciona_produto_carrinho_carrinhos_path(produto_id: produto.id),
+                                              method: :post, class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart add_carrinho",
+                                              id: 'add_carrinho'%><br><br><br><br>
       <%else%>
         <span class="label label-danger"><%= "indisponível"%></span></br>
+        <%= link_to 'Adicionar ao Carrinho', galeria_index_path,
+                                             class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart add_carrinho"%><br><br><br><br>
       <%end%>
-      <%= link_to 'Adicionar ao Carrinho', adiciona_produto_carrinho_carrinhos_path(produto_id: produto.id),
-                                            method: :post, class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart add_carrinho",
-                                            id: 'add_carrinho'%><br><br><br><br>
+
     </div>
 <%end%>

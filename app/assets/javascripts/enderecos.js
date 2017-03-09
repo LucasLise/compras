@@ -6,4 +6,5 @@ $(document).on("turbolinks:load", function(){
    $("#municipio_unidade_federativa").select2({
         placeholder: "Selecione..."
     });
+
 });

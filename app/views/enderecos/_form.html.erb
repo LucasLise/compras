@@ -1,31 +1,34 @@
-<%= simple_form_for(@endereco) do |f| %>
-  <%= f.error_notification %>
+<span id="formulario">
+  <h1>Endereço</h1><hr>
+  <%= simple_form_for(@endereco) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <div class="row">
-      <div class="col-md-8">
-        <%= f.input :logradouro, placeholder: 'campo, chácara, colônia, condomínio, rua'%>
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md-8">
+          <%= f.input :logradouro, placeholder: 'campo, chácara, colônia, condomínio, rua'%>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :numero %>
+        </div>
       </div>
-      <div class="col-md-4">
-        <%= f.input :numero %>
+      <%= f.input :rua%>
+      <%= f.input :bairro %>
+      <%= f.input :complemento %>
+
+      <div class="row">
+        <div class="col-md-8">
+          <%= f.association :municipio, input_html: {class: 'select2', id: 'municipio_unidade_federativa'} %>
+        </div>
+        <div class="col-md-4">
+          <%= f.association :unidade_federativa, collection: UnidadeFederativa.all, input_html: {class: 'select2', id: 'endereco_unidade_federativa'} %>
+        </div>
       </div>
+      <%= f.input :cep, input_html: {class: 'mask cep'}, placeholder: '00000-000'%>
     </div>
-    <%= f.input :rua%>
-    <%= f.input :bairro %>
-    <%= f.input :complemento %>
 
-    <div class="row">
-      <div class="col-md-8">
-        <%= f.association :municipio, input_html: {class: 'select2', id: 'municipio_unidade_federativa'} %>
-      </div>
-      <div class="col-md-4">
-        <%= f.association :unidade_federativa, collection: UnidadeFederativa.all, input_html: {class: 'select2', id: 'endereco_unidade_federativa'} %>
-      </div>
+    <div class="form-actions" align="right">
+      <input type="submit" name="commit" value="Confirmar Endereço" style="background: skyblue; color: black" class="btn btn-default glyphicon glyphicon-cloud" data-disable-with="Confirmar Endereço">
     </div>
-    <%= f.input :cep, input_html: {class: 'mask cep'}, placeholder: '00000-000'%>
-  </div>
-
-  <div class="form-actions" align="right">
-    <input type="submit" name="commit" value="Confirmar Endereço" style="background: skyblue; color: black" class="btn btn-default glyphicon glyphicon-cloud" data-disable-with="Confirmar Endereço">
-  </div>
-<% end %>
+  <% end %>
+</span>

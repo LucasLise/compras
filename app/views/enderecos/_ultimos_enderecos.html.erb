@@ -1,0 +1,19 @@
+<% ultimos_enderecos.each do |endereco| %>
+  <div class="panel panel-info">
+
+    <div class="panel-heading">
+      <h4 align="center">
+        <strong>Endereço de entrega</strong>
+      </h4>
+    </div>
+
+    <div class="panel-body">
+      <h6>
+        <strong style="color: black;font-family: monospace;">Rua  <%="#{endereco.rua}, #{endereco.numero}, #{endereco.bairro}, #{Municipio.find(endereco.municipio_id)}-#{UnidadeFederativa.find(endereco.unidade_federativa_id).retorna_sigla} #{endereco.complemento}" %></strong>
+      </h6>
+    </div>
+    <div class="panel-footer">
+        <%= link_to 'Escolher Endereço', finalizar_pedido_pedidos_path(endereco: endereco), class: 'btn btn-info' %>
+    </div>
+  </div>
+<% end %>
