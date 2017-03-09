@@ -8,4 +8,8 @@ class UnidadeFederativa < ApplicationRecord
   def to_s
     "#{self.sigla} - #{self.descricao}"
   end
+
+  def retorna_sigla
+    self.sigla
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308202221) do
+ActiveRecord::Schema.define(version: 20170309133515) do
 
   create_table "carrinhos", force: :cascade do |t|
     t.integer  "user_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170308202221) do
     t.integer  "user_id"
     t.integer  "municipio_id"
     t.integer  "unidade_federativa_id"
+    t.string   "rua"
     t.index ["municipio_id"], name: "index_enderecos_on_municipio_id"
     t.index ["unidade_federativa_id"], name: "index_enderecos_on_unidade_federativa_id"
     t.index ["user_id"], name: "index_enderecos_on_user_id"

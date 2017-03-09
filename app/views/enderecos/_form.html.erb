@@ -10,9 +10,9 @@
         <%= f.input :numero %>
       </div>
     </div>
-    <%= f.input :complemento %>
+    <%= f.input :rua%>
     <%= f.input :bairro %>
-    <%= f.input :cep, input_html: {class: 'mask cep'}, placeholder: '00000-000'%>
+    <%= f.input :complemento %>
 
     <div class="row">
       <div class="col-md-8">
@@ -22,6 +22,7 @@
         <%= f.association :unidade_federativa, collection: UnidadeFederativa.all, input_html: {class: 'select2', id: 'endereco_unidade_federativa'} %>
       </div>
     </div>
+    <%= f.input :cep, input_html: {class: 'mask cep'}, placeholder: '00000-000'%>
   </div>
 
   <div class="form-actions" align="right">
