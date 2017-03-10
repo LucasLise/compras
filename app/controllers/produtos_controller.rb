@@ -12,7 +12,6 @@ class ProdutosController < ApplicationController
   # GET /produtos/1
   # GET /produtos/1.json
   def show
-    authorize @produto
   end
 
   # GET /produtos/new
