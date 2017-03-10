@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20170309133515) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carrinhos", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carrinhos_on_user_id"
+    t.index ["user_id"], name: "index_carrinhos_on_user_id", using: :btree
   end
 
   create_table "categorias", force: :cascade do |t|
@@ -37,9 +40,9 @@ ActiveRecord::Schema.define(version: 20170309133515) do
     t.integer  "municipio_id"
     t.integer  "unidade_federativa_id"
     t.string   "rua"
-    t.index ["municipio_id"], name: "index_enderecos_on_municipio_id"
-    t.index ["unidade_federativa_id"], name: "index_enderecos_on_unidade_federativa_id"
-    t.index ["user_id"], name: "index_enderecos_on_user_id"
+    t.index ["municipio_id"], name: "index_enderecos_on_municipio_id", using: :btree
+    t.index ["unidade_federativa_id"], name: "index_enderecos_on_unidade_federativa_id", using: :btree
+    t.index ["user_id"], name: "index_enderecos_on_user_id", using: :btree
   end
 
   create_table "itens_carrinho", force: :cascade do |t|
@@ -48,10 +51,8 @@ ActiveRecord::Schema.define(version: 20170309133515) do
     t.integer  "quantidade"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "pedido_id"
-    t.index ["carrinho_id"], name: "index_itens_carrinho_on_carrinho_id"
-    t.index ["pedido_id"], name: "index_itens_carrinho_on_pedido_id"
-    t.index ["produto_id"], name: "index_itens_carrinho_on_produto_id"
+    t.index ["carrinho_id"], name: "index_itens_carrinho_on_carrinho_id", using: :btree
+    t.index ["produto_id"], name: "index_itens_carrinho_on_produto_id", using: :btree
   end
 
   create_table "itens_pedido", force: :cascade do |t|
@@ -62,8 +63,8 @@ ActiveRecord::Schema.define(version: 20170309133515) do
     t.datetime "updated_at",     null: false
     t.decimal  "valor_unitario"
     t.decimal  "valor_total"
-    t.index ["pedido_id"], name: "index_itens_pedido_on_pedido_id"
-    t.index ["produto_id"], name: "index_itens_pedido_on_produto_id"
+    t.index ["pedido_id"], name: "index_itens_pedido_on_pedido_id", using: :btree
+    t.index ["produto_id"], name: "index_itens_pedido_on_produto_id", using: :btree
   end
 
   create_table "marcas", force: :cascade do |t|
@@ -77,7 +78,7 @@ ActiveRecord::Schema.define(version: 20170309133515) do
     t.integer  "unidade_federativa_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["unidade_federativa_id"], name: "index_municipios_on_unidade_federativa_id"
+    t.index ["unidade_federativa_id"], name: "index_municipios_on_unidade_federativa_id", using: :btree
   end
 
   create_table "pedidos", force: :cascade do |t|
@@ -86,8 +87,8 @@ ActiveRecord::Schema.define(version: 20170309133515) do
     t.datetime "updated_at",  null: false
     t.decimal  "valor_total"
     t.integer  "endereco_id"
-    t.index ["endereco_id"], name: "index_pedidos_on_endereco_id"
-    t.index ["user_id"], name: "index_pedidos_on_user_id"
+    t.index ["endereco_id"], name: "index_pedidos_on_endereco_id", using: :btree
+    t.index ["user_id"], name: "index_pedidos_on_user_id", using: :btree
   end
 
   create_table "produtos", force: :cascade do |t|
@@ -103,9 +104,9 @@ ActiveRecord::Schema.define(version: 20170309133515) do
     t.integer  "categoria_id"
     t.integer  "item_carrinho_id"
     t.integer  "marca_id"
-    t.index ["categoria_id"], name: "index_produtos_on_categoria_id"
-    t.index ["item_carrinho_id"], name: "index_produtos_on_item_carrinho_id"
-    t.index ["marca_id"], name: "index_produtos_on_marca_id"
+    t.index ["categoria_id"], name: "index_produtos_on_categoria_id", using: :btree
+    t.index ["item_carrinho_id"], name: "index_produtos_on_item_carrinho_id", using: :btree
+    t.index ["marca_id"], name: "index_produtos_on_marca_id", using: :btree
   end
 
   create_table "unidades_federativas", force: :cascade do |t|
@@ -131,8 +132,22 @@ ActiveRecord::Schema.define(version: 20170309133515) do
     t.integer  "role",                   default: 0
     t.string   "nome"
     t.string   "cpf"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "carrinhos", "users"
+  add_foreign_key "enderecos", "municipios"
+  add_foreign_key "enderecos", "unidades_federativas"
+  add_foreign_key "enderecos", "users"
+  add_foreign_key "itens_carrinho", "carrinhos"
+  add_foreign_key "itens_carrinho", "produtos"
+  add_foreign_key "itens_pedido", "pedidos"
+  add_foreign_key "itens_pedido", "produtos"
+  add_foreign_key "municipios", "unidades_federativas"
+  add_foreign_key "pedidos", "enderecos"
+  add_foreign_key "pedidos", "users"
+  add_foreign_key "produtos", "categorias"
+  add_foreign_key "produtos", "itens_carrinho"
+  add_foreign_key "produtos", "marcas"
 end

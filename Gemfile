@@ -11,7 +11,7 @@ gem 'jquery-inputmask-rails'
 
 gem 'binding_of_caller'
 
-gem 'pg', group: :production
+gem 'pg'
 
 gem 'guard-rspec'
 
