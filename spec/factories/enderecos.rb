@@ -5,7 +5,5 @@ FactoryGirl.define do
     complemento "MyString"
     bairro "MyString"
     cep "MyString"
-    cidade "MyString"
-    uf "MyString"
   end
 end

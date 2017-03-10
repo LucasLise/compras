@@ -8,13 +8,13 @@ feature "realizando pedido" do
       login_as(user, :scope => :user)
   end
 
-  scenario "deve concluir pedido e redirecionar para os pedidos" do
+  scenario "deve exibir pagina para escolher endereços" do
     visit('/galeria')
     click_link('Adicionar ao Carrinho')
     click_link('Carrinho (1)')
-    expect(page).to have_content('Efetuar Pedido')
-    click_link('Efetuar Pedido')
-    expect(page).to have_content('Pedido 1')
-    expect(page).to have_content('Notebook')
+
+    click_link('Confirmar endereço')
+    expect(page).to have_content('Pedido')
+    expect(page).to have_content('Endereço')
   end
 end
