@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :carrinhos
   has_many :pedidos
   has_many :enderecos
+  has_many :comentarios 
 end

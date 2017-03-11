@@ -23,4 +23,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'unidade_federativa', 'unidades_federativas'
   inflect.irregular 'municipio', 'municipios'
   inflect.irregular 'endereco', 'enderecos'
+  inflect.irregular 'comentario', 'comentarios'
 end

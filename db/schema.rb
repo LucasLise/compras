@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309133515) do
+ActiveRecord::Schema.define(version: 20170311132255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20170309133515) do
     t.string   "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comentarios", force: :cascade do |t|
+    t.text     "descricao"
+    t.integer  "user_id"
+    t.integer  "produto_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["produto_id"], name: "index_comentarios_on_produto_id", using: :btree
+    t.index ["user_id"], name: "index_comentarios_on_user_id", using: :btree
   end
 
   create_table "enderecos", force: :cascade do |t|
@@ -137,6 +147,8 @@ ActiveRecord::Schema.define(version: 20170309133515) do
   end
 
   add_foreign_key "carrinhos", "users"
+  add_foreign_key "comentarios", "produtos"
+  add_foreign_key "comentarios", "users"
   add_foreign_key "enderecos", "municipios"
   add_foreign_key "enderecos", "unidades_federativas"
   add_foreign_key "enderecos", "users"

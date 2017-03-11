@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :produtos
+  resources :produtos do
+    resources :comentarios, only: [:new, :create]
+  end
 
   resources :galeria, only: :index
 

@@ -4,14 +4,10 @@
   <%@produtos.each do |produto|%>
       <div class="col-sm-6 col-md-4 thumbnail">
 
-        <br><a class="img-thumbnail" style='height: 90px' href='<%= produto_path(produto) %>'>
-
-            <%= image_tag produto.imagem.url(:thumb)%>
-
-        </a><br><br>
+        <br><%= link_to (image_tag produto.imagem.url(:thumb)), produto_path(produto), class: 'img-rounded' %><br>
 
         <span class="descricao-produto">
-          <%= produto.descricao %>
+          <%= link_to produto.descricao, produto_path(produto) %>
         </span>
         </br>
         <strong><%= number_to_currency(produto.preco) %></strong><br  >

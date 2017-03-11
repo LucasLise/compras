@@ -1,0 +1,14 @@
+<%= simple_form_for([@produto, @produto.comentarios.new]) do |f| %>
+
+  <h1 align="center"><strong>Sua Avaliação</strong></h1><hr>
+
+  <div class="row">
+    <div class="form-inputs col-md-12">
+      <%= f.text_area :descricao, class: 'descricao_comentario', placeholder: 'Descreva oque você acho desse produto...'%>
+    </div>
+  </div>
+  <div class="form-actions botao_comentario" align="right">
+    <%= f.button :submit, 'Enviar', style: "background: antiquewhite" %>
+  </div>
+
+<% end %>
