@@ -2,26 +2,27 @@
   <h4>Nenhum produto encontrado</h4>
 <%else%>
   <%@produtos.each do |produto|%>
-      <div class="col-sm-6 col-md-4 thumbnail">
 
-        <br><%= link_to (image_tag produto.imagem.url(:thumb)), produto_path(produto), class: 'img-rounded' %><br>
+      <div class="col-md-4">
+
+        <br><%= link_to (image_tag produto.imagem.url(:thumb), style: "height: 100px"), produto_path(produto), class: 'img-rounded'%><br><br>
 
         <span class="descricao-produto">
           <%= link_to produto.descricao, produto_path(produto) %>
         </span>
         </br>
-        <strong><%= number_to_currency(produto.preco) %></strong><br  >
+        <strong><%= number_to_currency(produto.preco) %></strong><br>
         <%if produto.quantidade.to_i > 0%>
           <span class="label label-success"><%= "disponível"%></span></br>
           <%= link_to 'Adicionar ao Carrinho', adiciona_produto_carrinho_carrinhos_path(produto_id: produto.id),
                                                 method: :post, class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart add_carrinho",
-                                                id: 'add_carrinho'%><br><br><br><br>
+                                                id: 'add_carrinho'%><br>
         <%else%>
           <span class="label label-danger"><%= "indisponível"%></span></br>
           <%= link_to 'Adicionar ao Carrinho', galeria_index_path,
                                                class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart add_carrinho"%><br><br><br><br>
         <%end%>
-
       </div>
+
   <%end%>
 <%end%>

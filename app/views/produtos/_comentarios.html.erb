@@ -1,4 +1,4 @@
-<% Comentario.all.each do |comentario| %>
+<% @produto.comentarios.each do |comentario| %>
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
@@ -16,7 +16,7 @@
       </div><br><br>
       <% if current_user.comentarios.exists?(comentario) %>
         <div class="row" align="right">
-          <%= link_to 'Exluir', produto_comentario_path(produto_id: comentario.produto_id, id: comentario.id), method: :delete, remote: true, class: 'btn btn-danger' %>
+          <%= link_to 'Excluir', produto_comentario_path(produto_id: comentario.produto_id, id: comentario.id), method: :delete, remote: true, class: 'btn btn-danger' %>
           <a class="btn btn-default acoes_comentario editar_comentario">Editar</a>
         </div>
       <% end %>

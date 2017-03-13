@@ -5,3 +5,13 @@
 .exluir_comentario{
   margin-right: 20px;
 }
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: monospace;
+  font-size: 17px;
+}
+
+textarea{
+  font-family: monospace;
+  font-size: 20px;
+}

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :municipio do
-    nome "MyString"
-    references ""
+    nome "Erechim"
+    association :unidade_federativa
   end
 end

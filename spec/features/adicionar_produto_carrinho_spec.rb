@@ -15,4 +15,23 @@ feature "adicionar produto ao carrinho" do
     expect(page).to have_content('Total: R$ 1.232,00')
     click_link('Logout')
   end
+
+  scenario 'deve incrementar item no carrinho' do
+    adicionar_ao_carrinho
+    expect(find(:css, '.quantidade').value ).to eq('1')
+    adicionar_ao_carrinho
+    expect(find(:css, '.quantidade').value ).to eq('2')
+    adicionar_ao_carrinho
+    expect(find(:css, '.quantidade').value ).to eq('3')
+  end
+
+  def adicionar_ao_carrinho
+    visit('/')
+    click_link('Adicionar ao Carrinho')
+    visit carrinhos_path
+    expect(page).to have_content('Notebook')
+    screenshot_and_save_page
+    expect(page).to have_css('.quantidade')
+  end
+
 end

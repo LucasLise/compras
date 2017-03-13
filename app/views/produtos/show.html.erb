@@ -13,8 +13,8 @@
        <% end %></br>
     </h3><br><br>
     <div class="row">
-        <%= link_to 'Voltar à loja', galeria_index_path, class: 'btn btn-default glyphicon glyphicon-arrow-left' %>
-        <%= link_to 'Adicionar ao Carrinho', adiciona_produto_carrinho_carrinhos_path(produto_id: @produto.id), method: :post, style: 'background-color: antiquewhite;', class:'btn btn-default  glyphicon glyphicon-shopping-cart' %>
+        <%= link_to 'Voltar à loja', galeria_index_path, style: "color: black;", class: 'btn btn-default glyphicon glyphicon-arrow-left' %>
+        <%= link_to 'Adicionar ao Carrinho', adiciona_produto_carrinho_carrinhos_path(produto_id: @produto.id), method: :post, style: "color: black;", class:'btn btn-success  glyphicon glyphicon-shopping-cart' %>
     </div>
   </div>
 </div>
