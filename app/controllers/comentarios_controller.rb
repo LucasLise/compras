@@ -1,5 +1,5 @@
 class ComentariosController < ApplicationController
-  before_action :autheticate_user!
+  before_action :authenticate_user!
   before_action :set_produto
   before_action :set_comentario, only: [:show, :edit, :update, :destroy]
 
@@ -32,6 +32,8 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       if @comentario.save
         format.html {redirect_to produto_path(@produto)}
+        format.js
+        format.json { render :show, status: :created, location: @comentario }
       else
         format.html { render :new }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
@@ -58,7 +60,8 @@ class ComentariosController < ApplicationController
   def destroy
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to comentarios_url, notice: 'Comentario was successfully destroyed.' }
+      format.js
+      format.html { redirect_to produto_path(@produto), notice: 'Comentario was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

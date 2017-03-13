@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :enderecos, only: [:new, :create]
+
   resources :marcas
 
   resources :pedidos, only: :index do
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :produtos do
-    resources :comentarios, only: [:new, :create]
+    resources :comentarios, only: [:create, :destroy, :update]
   end
 
   resources :galeria, only: :index

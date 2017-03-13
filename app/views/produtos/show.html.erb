@@ -13,34 +13,14 @@
        <% end %></br>
     </h3><br><br>
     <div class="row">
-      <div class="col-sm-3" align="right">
         <%= link_to 'Voltar à loja', galeria_index_path, class: 'btn btn-default glyphicon glyphicon-arrow-left' %>
-      </div>
-      <div class="col-sm-9">
         <%= link_to 'Adicionar ao Carrinho', adiciona_produto_carrinho_carrinhos_path(produto_id: @produto.id), method: :post, style: 'background-color: antiquewhite;', class:'btn btn-default  glyphicon glyphicon-shopping-cart' %>
-      </div>
     </div>
   </div>
 </div>
 
-<% Comentario.all.each do |comentario| %>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-1">
-          <img src="http://178.62.201.127/sites/default/files/default_images/default-user.png" style=" max-width:80px; max-height:80px;" alt="" class="img-circle">
-        </div><br>
-        <div class="col-md-4">
-          <h4 style="font-family: monospace;"><strong><%= comentario.user.nome %></strong></h4><br><br>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12" style="font-size: 17px;">
-          <%= comentario.descricao %>
-        </div>
-      </div><br><br>
-    </div>
-  </div>
-<% end %>
+<span id="comentarios">
+  <%= render 'comentarios' %>
+</span>
 
 <%= render 'comentarios/form' %>

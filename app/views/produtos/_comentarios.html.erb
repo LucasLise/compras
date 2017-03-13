@@ -1,0 +1,25 @@
+<% Comentario.all.each do |comentario| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-1">
+          <img src="http://178.62.201.127/sites/default/files/default_images/default-user.png" style=" max-width:80px; max-height:80px;" alt="" class="img-circle">
+        </div><br>
+        <div class="col-md-4">
+          <h4 style="font-family: monospace;"><strong><%= comentario.user.nome %></strong></h4><br><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="font-size: 17px;">
+          <p class="descricao"><%= comentario.descricao %></p>
+        </div>
+      </div><br><br>
+      <% if current_user.comentarios.exists?(comentario) %>
+        <div class="row" align="right">
+          <%= link_to 'Exluir', produto_comentario_path(produto_id: comentario.produto_id, id: comentario.id), method: :delete, remote: true, class: 'btn btn-danger' %>
+          <a class="btn btn-default acoes_comentario editar_comentario">Editar</a>
+        </div>
+      <% end %>
+  </div>
+  </div>
+<% end %>
