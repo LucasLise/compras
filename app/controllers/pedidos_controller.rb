@@ -3,50 +3,31 @@ class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
   helper_method :valor_total_pedido
 
-
   def finalizar_pedido
     @endereco = params[:endereco]
   end
 
   def todos_pedidos
-    if params[:ordem]
+    @pedidos = if params[:ordem]
       if params[:ordem] == 'recentes'
-          @pedidos = Pedido.all.reverse
+        Pedido.all.reverse
       else
-        @pedidos = Pedido.all
+        Pedido.all
       end
     else
-      @pedidos = Pedido.all.reverse
+      Pedido.all.reverse
     end
   end
 
   def criar_pedido
-    pedido = Pedido.create(user: current_user, valor_total: valor_total_pedido, endereco_id: params[:endereco])
-    carrinho_atual.itens_carrinho.each do |item_carrinho|
-      item_pedido = pedido.itens_pedido.new(produto: item_carrinho.produto, quantidade: item_carrinho.quantidade)
-      item_pedido.calcula_valores
-      item_pedido.save
-    end
-    atualizar_produto_estoque
+    pedido_service = PedidoService.new(carrinho_atual)
+
+    pedido = Pedido.create(user: current_user, valor_total: pedido_service.valor_total_pedido, endereco_id: params[:endereco])
+    pedido_service.migrar_itens_carrinho_para_pedidos(pedido)
+    pedido_service.atualizar_produto_estoque
     carrinho_atual.itens_carrinho.destroy_all
     carrinho_atual.destroy
     redirect_to pedidos_path
-  end
-
-  def valor_total_pedido
-    total = 0
-    carrinho_atual.itens_carrinho.each do |item_carrinho|
-      total += item_carrinho.produto.preco * item_carrinho.quantidade
-    end
-    total
-  end
-
-  def atualizar_produto_estoque
-    carrinho_atual.itens_carrinho.each do |item_carrinho|
-      quantidade_produto = item_carrinho.produto.quantidade
-      quantidade_carrinho = item_carrinho.quantidade
-      item_carrinho.produto.update(quantidade: quantidade_produto - quantidade_carrinho)
-    end
   end
 
   # GET /pedidos
