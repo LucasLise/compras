@@ -20,7 +20,12 @@
 </div>
 
 <span id="comentarios">
+
+  <div align="center">
+    <% if !current_user.comentarios.exists?(produto: @produto) %>
+      <%= link_to 'Avaliar Produto', new_produto_comentario_path(produto_id: @produto.id), remote: true, class: 'btn btn-success', style:'width: 300px; background-color: cornflowerblue' %> <br><br><br>
+    <% end %>
+  </div>
+
   <%= render 'comentarios' %>
 </span>
-
-<%= render 'comentarios/form' %>

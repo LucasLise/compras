@@ -46,7 +46,7 @@ class ComentariosController < ApplicationController
   def update
     respond_to do |format|
       if @comentario.update(comentario_params)
-        format.html { redirect_to @comentario, notice: 'Comentario was successfully updated.' }
+        format.html { redirect_to galeria_index_path, notice: 'Comentario was successfully updated.' }
         format.json { render :show, status: :ok, location: @comentario }
       else
         format.html { render :edit }

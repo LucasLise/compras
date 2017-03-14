@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :enderecos, only: [:new, :create]
 
   resources :marcas
 
@@ -16,8 +15,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+
   resources :produtos do
-    resources :comentarios, only: [:create, :destroy, :update]
+    resources :comentarios, only: [:create, :destroy, :update, :update, :edit, :new]
   end
 
   resources :galeria, only: :index
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :carrinhos, only: :index do
     collection do
+      resources :enderecos, only: [:new, :create]
       post :adiciona_produto_carrinho
     end
   end
