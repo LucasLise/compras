@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :imagens
   resources :marcas
 
   resources :pedidos, only: :index do

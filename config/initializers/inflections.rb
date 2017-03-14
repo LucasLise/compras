@@ -24,4 +24,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'municipio', 'municipios'
   inflect.irregular 'endereco', 'enderecos'
   inflect.irregular 'comentario', 'comentarios'
+  inflect.irregular 'imagem', 'imagens'
 end

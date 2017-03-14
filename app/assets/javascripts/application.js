@@ -20,3 +20,6 @@
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.date.extensions
 //= require select2
+//= require cocoon
+//= require jquery.elevatezoom
+//= require jquery.elevateZoom-3.0.8.min

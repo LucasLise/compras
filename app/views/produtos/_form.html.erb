@@ -5,9 +5,27 @@
   <%= f.input :quantidade, input_html: {min:'0'} %>
   <%= f.association :categoria %>
   <%= f.association :marca %>
-  <%= f.input :imagem, as: :file %><br/>
+
+
+
+<fieldset>
+  <div class="well well-sm tab-below">
+      <legend><h3>Imagens</h3></legend>
+      <div>
+        <% f.simple_fields_for :imagens do |imagem| %>
+          <%= render partial: 'imagem_fields', locals: {f: imagem} %>
+        <% end %>
+        <div class="">
+            <%= link_to_add_association f, :imagens, class: 'btn btn-default' do %>
+              <i class="fa fa-plus"> <b> Adicionar Imagem </b> </i>
+            <% end %>
+        </div>
+     </div>
+  </div>
+</fieldset>
 
   <%= f.button :submit, :class => 'btn-primary' %>
+
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 produtos_path, :class => 'btn btn-default' %>
 <% end %>

@@ -5,7 +5,7 @@
 
       <div class="col-md-4">
 
-        <br><%= link_to (image_tag produto.imagem.url(:thumb), style: "height: 100px"), produto_path(produto), class: 'img-rounded'%><br><br>
+        <br><%= link_to (image_tag produto.imagens.first.imagem.url(:thumb), style: "height: 100px"), produto_path(produto), class: 'img-rounded'%><br><br>
 
         <span class="descricao-produto">
           <%= link_to produto.descricao, produto_path(produto) %>

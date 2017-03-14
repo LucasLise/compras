@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-md-6">
     <div class="thumbnail">
-      <%= image_tag @produto.imagem.url(:original) %>
+      <br><%= image_tag @produto.imagens.last.imagem.url(:medium), id: "imagem_principal", class: 'zoom', style: 'height: 270px' %><br><br>
     </div>
   </div>
+
   <div class="col-md-6">
     <h1 align='center'  style="color: cadetblue;"><%= "#{@produto.descricao} #{@produto.marca}" %></h1><hr>
      <h3>Valor: <strong> <%= number_to_currency @produto.preco %> </strong></h3>
@@ -18,6 +19,14 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <% @produto.imagens.each do |imagem| %>
+      <div class="img-thumbnail ">
+        <a><img class="imagem_miniatura" style="height: 50px; width: 70px"  src="<%= imagem.imagem.url(:thumb) %>" alt="Mz"></a>
+      </div>
+  <% end %>
+</div><br><br>
 
 <span id="comentarios">
 

@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'elevatezoom-rails'
+
+gem "cocoon"
+
 gem 'select2-sass-bootstrap-rails'
 
 gem 'jquery-inputmask-rails'
