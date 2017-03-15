@@ -20,7 +20,7 @@
   <tbody>
     <% carrinho_atual.itens_carrinho.each do |item_carrinho| %>
       <tr>
-        <td><%= image_tag(item_carrinho.produto.imagem.url(:thumb))%></td>
+        <td><%= image_tag(item_carrinho.produto.imagens.last.imagem.url(:thumb))%></td>
         <td class="descricao_produto_carrinho"><%= item_carrinho.produto.descricao %></td>
         <td><%= number_to_currency(item_carrinho.produto.preco) %></td>
         <td><%= item_carrinho.quantidade %></td>

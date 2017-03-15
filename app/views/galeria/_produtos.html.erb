@@ -3,26 +3,26 @@
 <%else%>
   <%@produtos.each do |produto|%>
 
-      <div class="col-md-4">
-
-        <br><%= link_to (image_tag produto.imagens.first.imagem.url(:thumb), style: "height: 100px"), produto_path(produto), class: 'img-rounded'%><br><br>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <br><%= link_to (image_tag produto.imagens.first.imagem.url(:medium), style: 'height: 150px '), produto_path(produto), class: ''%><br><br>
 
         <span class="descricao-produto">
-          <%= link_to produto.descricao, produto_path(produto) %>
+          <%= link_to produto.descricao, produto_path(produto) %><br>
         </span>
-        </br>
         <strong><%= number_to_currency(produto.preco) %></strong><br>
         <%if produto.quantidade.to_i > 0%>
           <span class="label label-success"><%= "disponível"%></span></br>
           <%= link_to 'Adicionar ao Carrinho', adiciona_produto_carrinho_carrinhos_path(produto_id: produto.id),
                                                 method: :post, class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart add_carrinho",
-                                                id: 'add_carrinho'%><br>
+                                                id: 'add_carrinho'%><br><br>
         <%else%>
           <span class="label label-danger"><%= "indisponível"%></span></br>
           <%= link_to 'Adicionar ao Carrinho', galeria_index_path,
-                                               class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart add_carrinho"%><br><br><br><br>
+                                                class: "btn btn-default btn-xs  glyphicon glyphicon-shopping-cart add_carrinho"%><br><br><br><br>
         <%end%>
-      </div>
+     </div>
+   </div>
 
   <%end%>
 <%end%>

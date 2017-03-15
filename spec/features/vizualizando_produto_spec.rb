@@ -4,8 +4,9 @@ feature 'vizualizando produto' do
   let!(:user){FactoryGirl.create(:user)}
   let!(:produto){FactoryGirl.create(:produto)}
   let!(:comentario){FactoryGirl.create(:comentario, user: user, produto: produto)}
+  let!(:imagem){FactoryGirl.create(:imagem, produto: produto)}
 
-  before :each do
+  before :each do 
     login_as(user, :scope => :user)
   end
 

@@ -5,7 +5,7 @@ class CategoriasController < ApplicationController
   # GET /categorias
   # GET /categorias.json
   def index
-    @categorias = Categoria.all
+    @categorias = policy_scope(Categoria).all
     authorize @categorias
   end
 
@@ -17,7 +17,7 @@ class CategoriasController < ApplicationController
 
   # GET /categorias/new
   def new
-    @categoria = Categoria.new
+    @categoria = policy_scope(Categoria).new
     authorize @categoria
   end
 
@@ -30,7 +30,7 @@ class CategoriasController < ApplicationController
   # POST /categorias.json
   def create
 
-    @categoria = Categoria.new(categoria_params)
+    @categoria = policy_scope(Categoria).new(categoria_params)
 
     respond_to do |format|
       if @categoria.save
@@ -73,7 +73,7 @@ class CategoriasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_categoria
-      @categoria = Categoria.find(params[:id])
+      @categoria = policy_scope(Categoria).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

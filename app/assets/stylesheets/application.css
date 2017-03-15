@@ -15,3 +15,64 @@
  *= require devise_bootstrap_views
  *= require select2
 */
+
+
+.footer {
+  width: 100%;
+  height: 55px;
+  background-color: bisque;
+  text-align: center;
+  width: 100%;
+  position: inherit;
+  margin-top: -moz-calc;
+}
+
+.teste{
+  margin-top: 100px;
+  color: #fff;
+  width: 100%;
+}
+
+.fa-twitter {
+  margin-top: 10px;
+  color: #4099FF;
+}
+
+.fa-facebook {
+    color: #3B5998;
+}
+
+.fa-youtube-play {
+    color: #e52d27;
+}
+
+.fa-rss {
+    color: #FF6600;
+}
+
+.fa-vine {
+    color: #00a478;
+}
+
+.fa-flickr {
+    color: #ff0084;
+}
+
+.fa-twitch {
+    color: #6441A5;
+}
+
+.fa-linkedin {
+    color: #007bb6;
+}
+
+.fa {
+    opacity: 0.7;
+    transition: 1s;
+    -webkit-transition: 1s;
+}
+
+.fa:hover{
+    opacity: 1;
+    transition: 1s;
+    -webkit-transition: 1s;

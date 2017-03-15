@@ -4,16 +4,10 @@ $(document).on("turbolinks:load", function(){
   });
 
   $('.imagem_miniatura').click(function(){
-      var src = this.src
-      src = src.replace("thumb", "medium")
-      $('#imagem_principal').attr("src", src)
+      var src = this.src;
+      $('#imagem_principal').attr("src", src);
   });
 
-  $('#imagem_principal').mouseover(function(){
-    $(".zoom").elevateZoom({
-        zoomType				: "lens",
-        lensShape : "round",
-        lensSize    : 200
-    });
-  });
+  $("#imagem_principal").elevateZoom({scrollZoom : true});
+
 });
