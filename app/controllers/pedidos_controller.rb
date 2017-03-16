@@ -20,11 +20,7 @@ class PedidosController < ApplicationController
   end
 
   def criar_pedido
-    pedido_service = PedidoService.new(carrinho_atual)
-
-    pedido = Pedido.create(user: current_user, valor_total: pedido_service.valor_total_pedido, endereco_id: params[:endereco])
-    pedido_service.migrar_itens_carrinho_para_pedidos(pedido)
-    pedido_service.atualizar_produto_estoque
+    pedido_service = PedidoService.new(carrinho_atual, params[:endereco], current_user).criar_pedido
     carrinho_atual.itens_carrinho.destroy_all
     carrinho_atual.destroy
     redirect_to pedidos_path
