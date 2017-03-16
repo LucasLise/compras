@@ -3,6 +3,8 @@ require "rails_helper"
 feature "adicionar produto ao carrinho" do
   let!(:user){FactoryGirl.create(:user) }
   let!(:produto){FactoryGirl.create(:produto)}
+  let!(:imagem){FactoryGirl.create(:imagem, produto: produto)}
+
 
   before :each do
       login_as(user, :scope => :user)

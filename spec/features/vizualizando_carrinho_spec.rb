@@ -6,6 +6,7 @@ feature 'vizualizando carrinho' do
   let!(:produto){FactoryGirl.create(:produto)}
   let!(:carrinho){FactoryGirl.create(:carrinho, user: user)}
   let!(:item_carrinho){FactoryGirl.create(:item_carrinho, carrinho: carrinho, produto: produto)}
+  let!(:imagem){FactoryGirl.create(:imagem, produto: produto)}
 
   before :each do
       login_as(user, :scope => :user)

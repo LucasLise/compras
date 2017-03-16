@@ -2,9 +2,9 @@ require "rails_helper"
 
 feature "filtrando produtos" do
   let!(:marca){FactoryGirl.create(:marca)}
-
   let!(:user){FactoryGirl.create(:user) }
   let!(:produto){FactoryGirl.create(:produto)}
+  let!(:imagem){FactoryGirl.create(:imagem, produto: produto)}
 
   before :each do
       login_as(user, :scope => :user)

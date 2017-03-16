@@ -5,9 +5,10 @@ feature "realizando pedido" do
   let!(:produto){FactoryGirl.create(:produto)}
   let!(:carrinho){FactoryGirl.create(:carrinho, user: user)}
   let!(:item_carrinho){FactoryGirl.create(:item_carrinho, produto: produto, carrinho: carrinho)}
-  let!(:unidade_federativa){FactoryGirl.create(:unidade_federativa)}
+  let!(:unidade_federativa){FactoryGirl.create(:unidade_federativa, sigla: 'MG')}
   let!(:municipio){FactoryGirl.create(:municipio, unidade_federativa: unidade_federativa)}
   let!(:endereco){FactoryGirl.create(:endereco, user: user, unidade_federativa: unidade_federativa, municipio: municipio)}
+  let!(:imagem){FactoryGirl.create(:imagem, produto: produto)}
 
   before :each do
       login_as(user, :scope => :user)
@@ -23,10 +24,14 @@ feature "realizando pedido" do
     expect(page).to have_content('Endereço')
   end
 
-  scenario 'escolher endereço' do
+  scenario 'comprando' do
     visit carrinhos_path
     expect(page).to have_content('Notebook')
     click_on('Confirmar endereço')
+  end
+
+  scenario 'escolhendo endereço' do
+    visit new_endereco_path
     expect(page).to have_content('Endereço')
     expect(page).to have_content('Pedido')
     expect(page).to have_content('Escolher Endereço')

@@ -3,6 +3,7 @@ require "rails_helper"
 feature "pesquisando produtos na galeria" do
 
   let!(:produto) { FactoryGirl.create(:produto, descricao: "Notebook") }
+  let!(:imagem){FactoryGirl.create(:imagem, produto: produto)}
 
   scenario "ao pesquisar pela descrição deve exibir os produtos correspondentes" do
     visit "/galeria"

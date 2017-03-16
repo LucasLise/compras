@@ -6,7 +6,7 @@ feature "vizualizando galeria" do
   let!(:categoria){ FactoryGirl.create(:categoria, descricao: 'Eletrônicos')}
   let!(:categoria){ FactoryGirl.create(:categoria, descricao: 'Alimentos')}
   let!(:marca){ FactoryGirl.create(:marca, descricao: 'HP')}
-
+  let!(:imagem){FactoryGirl.create(:imagem, produto: produto)}
 
   scenario "vizualizar produtos da galeria" do
     visit "/galeria"
