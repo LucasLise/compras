@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    #flash[:notice] = "Você não tem permição para esta ação"
+    flash[:alert] = "Você não possui permição para esta ação."
     redirect_to(request.referrer || root_path)
   end
 
