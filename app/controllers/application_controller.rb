@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   include Pundit
+  include ControllerResponder
+  
   protect_from_forgery
 
   protect_from_forgery with: :exception
@@ -35,7 +37,7 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    flash[:alert] = "Você não possui permição para esta ação."
+    flash[:alert] = "Você não possui permissão para esta ação."
     redirect_to(request.referrer || root_path)
   end
 

@@ -15,6 +15,12 @@
     <%else%>
       <%= render partial:'layouts/nao_cliente' %>
     <%end%>
+    <% if notice.present? %>
+      <div class="panel panel-info">
+        <div class="panel-heading">Informação</div>
+        <div class="panel-body"><%= notice %></div>
+      </div>
+    <% end %>
     <% if alert.present? %>
       <div class="panel panel-danger" style="border-color: #ED5565;">
         <div class="panel-heading"  style="background: #ED5565; color: white;">Atenção</div>

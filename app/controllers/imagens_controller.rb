@@ -25,7 +25,7 @@ class ImagensController < ApplicationController
   # POST /imagens.json
   def create
     @imagem = Imagem.new(imagem_params)
-    @imagem.produto.id = :produto_id
+    @imagem.produto  = :produto_id
 
     respond_to do |format|
       if @imagem.save
@@ -55,11 +55,7 @@ class ImagensController < ApplicationController
   # DELETE /imagens/1
   # DELETE /imagens/1.json
   def destroy
-    @imagem.destroy
-    respond_to do |format|
-      format.html { redirect_to imagens_url, notice: 'Imagem was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    destroy_and_respond(@imagem, imagens_path, 'Imagem removida com sucesso')
   end
 
   private
