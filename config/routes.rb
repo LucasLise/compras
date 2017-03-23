@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
 
   resources :produtos do
-    resources :comentarios, only: [:create, :destroy, :update, :update, :edit, :new]
+    resources :comentarios
   end
 
   resources :galeria, only: :index
