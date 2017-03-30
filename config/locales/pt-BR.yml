@@ -1,5 +1,9 @@
 pt-BR:
   activerecord:
+    models:
+      produto:
+        one: Produto
+        other: Produtos
     attributes:
       produto:
         descricao: Descrição
@@ -19,3 +23,11 @@ pt-BR:
         uf: 'UF'
         unidade_federativa: Unidade Federativa
         municipio: Município
+  views:
+    actions:
+      list: Lista de %{model}
+      new: Novo %{model}
+      new-fem: Nova %{model}
+      edit: Editar %{model}
+      show: Vizualizar
+      destroy: Excluir

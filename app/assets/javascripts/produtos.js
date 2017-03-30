@@ -10,4 +10,11 @@ $(document).on("turbolinks:load", function(){
 
   $("#imagem_principal").elevateZoom({scrollZoom : true});
 
+  $("#produto_categoria_id").select2({
+       placeholder: "Selecione..."
+  });
+
+  $("#produto_marca_id").select2({
+    placeholder: "Selecione..."
+  });
 });

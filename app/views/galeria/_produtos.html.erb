@@ -10,7 +10,9 @@
         <span class="descricao-produto">
           <%= link_to produto.descricao, produto_path(produto) %><br>
         </span>
-        <strong><%= number_to_currency(produto.preco) %></strong><br>
+        <span class="preco-produto">
+          <strong><%= number_to_currency(produto.preco) %></strong><br>
+        </span>
         <%if produto.quantidade.to_i > 0%>
           <span class="label label-success"><%= "disponível"%></span></br>
           <%= link_to 'Adicionar ao Carrinho', adiciona_produto_carrinho_carrinhos_path(produto_id: produto.id),

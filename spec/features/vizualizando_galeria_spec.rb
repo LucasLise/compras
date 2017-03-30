@@ -25,4 +25,9 @@ feature "vizualizando galeria" do
     expect(page).to have_content("HP")
   end
 
+  scenario 'para continuar faça login' do
+    visit '/'
+    click_on 'Adicionar ao Carrinho'
+    expect(page).to have_content  'Para continuar, faça login ou registre-se.'
+  end
 end

@@ -15,14 +15,6 @@ class PedidoService
 
   private
 
-  def valor_total_pedido
-    total = 0
-    carrinho_atual.itens_carrinho.each do |item_carrinho|
-      total += item_carrinho.produto.preco * item_carrinho.quantidade
-    end
-    total
-  end
-
   def atualizar_produto_estoque
     carrinho_atual.itens_carrinho.each do |item_carrinho|
       quantidade_produto = item_carrinho.produto.quantidade

@@ -14,4 +14,11 @@ RSpec.describe Categoria, type: :model do
       expect(subject).to have_many(:produtos)
     end
   end
+
+  context "metodos" do
+    it "deve retornar descricao" do
+      categoria = FactoryGirl.build(:categoria, descricao: 'Categoria')
+      expect(categoria.to_s).to eql("#{categoria.id} - Categoria")
+    end
+  end
 end

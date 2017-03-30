@@ -14,7 +14,7 @@ feature "adicionar produto ao carrinho" do
     visit('/galeria')
     click_link('Adicionar ao Carrinho')
     click_link('Carrinho (1)')
-    expect(page).to have_content('Total: R$ 1.232,00')
+    expect(page).to have_content("Total: R$ 1.232,00")
     click_link('Logout')
   end
 
@@ -25,6 +25,16 @@ feature "adicionar produto ao carrinho" do
     expect(find(:css, '.quantidade').value ).to eq('2')
     adicionar_ao_carrinho
     expect(find(:css, '.quantidade').value ).to eq('3')
+  end
+
+  scenario 'deve aumentar a quantidade de itens' do
+    visit('/')
+    click_link('Adicionar ao Carrinho')
+    visit carrinhos_path
+    fill_in 'quant', with: '100'
+    click_on 'Atualizar'
+    screenshot_and_save_page
+    expect(page).to have_content("Total: R$ 12.310,00")
   end
 
   def adicionar_ao_carrinho

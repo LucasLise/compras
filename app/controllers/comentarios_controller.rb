@@ -6,7 +6,7 @@ class ComentariosController < ApplicationController
   # GET /comentarios
   # GET /comentarios.json
   def index
-    @comentarios = Comentario.all
+    # @comentarios = Comentario.all
   end
 
   # GET /comentarios/1
@@ -44,15 +44,15 @@ class ComentariosController < ApplicationController
   # PATCH/PUT /comentarios/1
   # PATCH/PUT /comentarios/1.json
   def update
-    respond_to do |format|
-      if @comentario.update(comentario_params)
-        format.html { redirect_to galeria_index_path, notice: 'Comentario was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comentario }
-      else
-        format.html { render :edit }
-        format.json { render json: @comentario.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @comentario.update(comentario_params)
+    #     format.html { redirect_to galeria_index_path, notice: 'Comentario was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @comentario }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @comentario.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /comentarios/1

@@ -14,4 +14,11 @@ RSpec.describe Marca, type: :model do
       expect(subject).to have_many(:produtos)
     end
   end
+
+  context "metodos" do
+    it "deve retornar descricao" do
+      marca = FactoryGirl.build(:marca, descricao: 'Marca')
+      expect(marca.to_s).to eql('Marca')
+    end
+  end
 end

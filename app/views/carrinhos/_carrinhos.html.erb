@@ -1,3 +1,8 @@
+<div class="row">
+  <div class="col-md-12" align="right">
+    <%= link_to 'Atualizar', carrinhos_path, class: 'btn btn-default' %>
+  </div>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -14,7 +19,7 @@
             <td><%= image_tag(item_carrinho.produto.imagens.last.imagem.url(:thumb))%></td>
             <td class="descricao_produto_carrinho"><%= item_carrinho.produto.descricao %></td>
             <td><%= number_to_currency(item_carrinho.produto.preco) %></td>
-            <td data-item="<%= item_carrinho.id %>"><%= number_field_tag '', nil, min: 1, max: item_carrinho.produto.quantidade, value: item_carrinho.quantidade, style: 'width: 50px', class: 'quantidade' %></td>
+            <td data-item="<%= item_carrinho.id %>"><%= number_field_tag :quant, nil, min: 1, max: item_carrinho.produto.quantidade, value: item_carrinho.quantidade, style: 'width: 50px', class: 'quantidade' %></td>
             <td><%= number_to_currency valor_item(item_carrinho.quantidade, item_carrinho.produto.preco)%></td>
             <td>
                 <span>

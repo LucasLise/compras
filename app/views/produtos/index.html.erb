@@ -2,10 +2,12 @@
 
 <div class="row">
   <div class="col-md-6">
-    <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
+    <h3><%= action_list(Produto) %></h3><hr>
   </div>
   <div class="col-md-6" align="right">
-    <%= link_to 'New', new_produto_path, class: 'btn btn-info'%>
+    <h3>
+      <%= link_to action_new(Produto), new_produto_path, class: 'btn btn-info'%>
+    </h3>
   </div>
 </div>
 
@@ -28,11 +30,9 @@
         <td><%= produto.preco %></td>
         <td><%=l produto.created_at %></td>
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      produto_path(produto), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_produto_path(produto), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to t('views.actions.show', :default => t("helpers.links.show")),produto_path(produto), :class => 'btn btn-default btn-xs' %>
+          <%= link_icon_to_edit(edit_produto_path(produto)) %>
+          <%= link_to t('views.actions.destroy', :default => t("helpers.links.destroy")),
                       produto_path(produto),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
