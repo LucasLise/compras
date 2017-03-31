@@ -6,8 +6,6 @@
   <%= f.association :categoria%>
   <%= f.association :marca %>
 
-
-
 <fieldset>
   <div class="well well-sm tab-below">
       <legend><h3>Imagens</h3></legend>
@@ -24,8 +22,6 @@
   </div>
 </fieldset>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
-
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                produtos_path, :class => 'btn btn-default' %>
+  <%= save_button %>
+  <%= link_icon_to_back(produtos_path) %>
 <% end %>

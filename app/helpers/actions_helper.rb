@@ -18,7 +18,7 @@ module ActionsHelper
     def action_edit(model)
       I18n.t('views.actions.edit', model: model.model_name.human)
     end
-    
+
     # def action_do_edit
     #   I18n.t('views.actions.do_edit')
     # end

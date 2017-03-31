@@ -19,21 +19,20 @@
     </a>
   </div><br>
 
-  <div class="row" align="right">
-    <div class="col-md-9">
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <%= search_form_for @q, remote: true, url: galeria_index_path do |f| %>
-            <%= f.search_field :descricao_cont, placeholder: 'Pesquisar Produto', class: 'form-control', style: "" %>
-            <% end %>
-            <button type="submit" class="btn btn-default">Pesquisar</button>
+  <div class="row">
+    <div class="col-md-10">
+      <%= search_form_for@q, remote: true, url: galeria_index_path do |f| %>
+        <div class="input-group">
+          <%= f.text_field :descricao_cont, class: "input-sm form-control", placeholder: "Pesquisar por Descrição" %>
+          <span class="input-group-btn">
+            <%= f.submit 'Pesquisar', class: "btn btn-sm btn-primary" %>
+          </span>
         </div>
-      </form>
-   </div>
-
-    <div class="col-md-3">
+      <% end %>
+    </div>
+    <div class="col-md-2">
           <%= select_tag "ordenacao", raw("<option value='crescente'>Menor Preço</option><option value='decrescente'>Maior Preço</option>"),
-                                      include_blank: "Todos", class: 'btn btn-default', style: 'background-color: #777777; margin-top: 10px'%>
+                                      include_blank: "Todos", class: 'btn btn-default col-md-12', style: 'background-color: #777777;'%>
     </div>
   </div>
 
