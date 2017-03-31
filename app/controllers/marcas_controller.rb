@@ -30,42 +30,22 @@ class MarcasController < ApplicationController
   # POST /marcas.json
   def create
     @marca = Marca.new(marca_params)
-
-    respond_to do |format|
-      if @marca.save
-        format.html { redirect_to @marca, notice: 'Marca was successfully created.' }
-        format.json { render :show, status: :created, location: @marca }
-      else
-        format.html { render :new }
-        format.json { render json: @marca.errors, status: :unprocessable_entity }
-      end
-    end
+    save_and_respond @marca, 'Marca criada com sucesso'
     authorize @marca
   end
 
   # PATCH/PUT /marcas/1
   # PATCH/PUT /marcas/1.json
   def update
-    respond_to do |format|
-      if @marca.update(marca_params)
-        format.html { redirect_to @marca, notice: 'Marca was successfully updated.' }
-        format.json { render :show, status: :ok, location: @marca }
-      else
-        format.html { render :edit }
-        format.json { render json: @marca.errors, status: :unprocessable_entity }
-      end
-    end
+    @marca.update(marca_params)
+    save_and_respond @marca, 'Marca criada com sucesso'
     authorize @marca
   end
 
   # DELETE /marcas/1
   # DELETE /marcas/1.json
   def destroy
-    @marca.destroy
-    respond_to do |format|
-      format.html { redirect_to marcas_url, notice: 'Marca was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    destroy_and_respond @marca, marcas_path, 'Marca removida com sucesso.'
     authorize @marca
   end
 
