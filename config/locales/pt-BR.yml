@@ -4,12 +4,6 @@ pt-BR:
       produto:
         one: Produto
         other: Produtos
-      categoria:
-        one: Categoria
-        other: Categorias
-      marca:
-        one: Marca
-        other: Marcas
     attributes:
       produto:
         descricao: Descrição
@@ -29,19 +23,11 @@ pt-BR:
         uf: 'UF'
         unidade_federativa: Unidade Federativa
         municipio: Município
-  buttons:
-    edit: Editar
-    new: Novo
-    show: Vizualizar
-    delete: Excluir
-    back: Voltar
   views:
     actions:
-      confirm: 'Você tem certeza?'
       list: Lista de %{model}
       new: Novo %{model}
       new-fem: Nova %{model}
       edit: Editar %{model}
       show: Vizualizar
       destroy: Excluir
-      save: Salvar

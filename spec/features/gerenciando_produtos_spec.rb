@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "gerenciando produto" do
+feature "permissões" do
   let!(:user){FactoryGirl.create(:user, role: 1) }
   let!(:produto){FactoryGirl.create(:produto)}
   let!(:imagem){FactoryGirl.create(:imagem, produto: produto)}
@@ -24,15 +24,15 @@ feature "gerenciando produto" do
     visit edit_produto_path(produto)
     fill_in 'Descrição', with: 'editando descricao'
 
-    click_on 'Salvar'
-    expect(page).to have_content('Produto atualizado com sucesso.')
+    click_on 'Atualizar Produto'
+    expect(page).to have_content('Produto was successfully updated.')
   end
 
   scenario 'remover produto' do
     visit produtos_path
     imagem.destroy
 
-    click_on 'Excluir'
-    expect(page).to have_content('Produto removido com sucesso.')
+    click_on 'Destroy'
+    expect(page).to have_content('Produto was successfully updated.')
   end
 end

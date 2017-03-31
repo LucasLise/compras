@@ -1,6 +1,7 @@
 <%= simple_form_for @marca do |f| %>
   <%= f.input :descricao %>
 
-  <%= save_button %>
-  <%= link_icon_to_back marcas_path %>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                marcas_path, :class => 'btn btn-default' %>
 <% end %>

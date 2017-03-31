@@ -29,23 +29,44 @@ class CategoriasController < ApplicationController
   # POST /categorias
   # POST /categorias.json
   def create
+
     @categoria = policy_scope(Categoria).new(categoria_params)
+
+    respond_to do |format|
+      if @categoria.save
+        format.html { redirect_to @categoria, notice: 'Categoria was successfully created.' }
+        format.json { render :show, status: :created, location: @categoria }
+      else
+        format.html { render :new }
+        format.json { render json: @categoria.errors, status: :unprocessable_entity }
+      end
+    end
     authorize @categoria
-    save_and_respond @categoria, 'Categoria criada com sucesso.'
   end
 
   # PATCH/PUT /categorias/1
   # PATCH/PUT /categorias/1.json
   def update
+    respond_to do |format|
+      if @categoria.update(categoria_params)
+        format.html { redirect_to @categoria, notice: 'Categoria was successfully updated.' }
+        format.json { render :show, status: :ok, location: @categoria }
+      else
+        format.html { render :edit }
+        format.json { render json: @categoria.errors, status: :unprocessable_entity }
+      end
+    end
     authorize @categoria
-    @categoria.update(categoria_params)
-    save_and_respond @categoria, 'Categoria atualizada com sucesso.'
   end
 
   # DELETE /categorias/1
   # DELETE /categorias/1.json
   def destroy
-    destroy_and_respond(@categoria, categorias_path, 'Categoria removida com sucesso.')
+    @categoria.destroy
+    respond_to do |format|
+      format.html { redirect_to categorias_url, notice: 'Categoria was successfully destroyed.' }
+      format.json { head :no_content }
+    end
     authorize @categoria
   end
 

@@ -1,29 +1,36 @@
 <%- model_class = Categoria -%>
 <div class="row">
   <div class="col-md-6">
-    <h3><%= action_list(Categoria) %></h3>
+    <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
   </div>
   <div class="col-md-6" align="right">
-    <h3><%= link_to action_new_fem(Categoria), new_categoria_path, class: 'btn btn-info btn-xs'%></h3>
+    <%= link_to 'New', new_categoria_path, class: 'btn btn-info'%>
   </div>
-</div><hr>
-<table class="table table-striped">
+</div><table class="table table-striped">
   <thead>
     <tr>
-      <th class="text-center"><%= model_class.human_attribute_name(:descricao) %></th>
-      <th class="text-center"><%= model_class.human_attribute_name(:created_at) %></th>
-      <th class="text-center"><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:descricao) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @categorias.each do |categoria| %>
       <tr>
-        <td class="text-center"><%= categoria.descricao %></td>
-        <td class="text-center"><%=l categoria.created_at %></td>
-        <td class="text-center">
-          <%= link_icon_to_show(categoria_path(categoria)) %>
-          <%= link_icon_to_edit(edit_categoria_path(categoria)) %>
-          <%= link_icon_to_destroy(categoria_path(categoria)) %>
+        <td><%= link_to categoria.id, categoria_path(categoria) %></td>
+        <td><%= categoria.descricao %></td>
+        <td><%=l categoria.created_at %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      categoria_path(categoria), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_categoria_path(categoria), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      categoria_path(categoria),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
