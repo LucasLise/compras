@@ -11,6 +11,10 @@ module ControllerResponder
     end
   end
 
+  def index_and_respond(list)
+    list.paginate(page: params[:page], per_page: 9)
+  end
+
   def destroy_and_respond(object, url, notice)
     object.destroy
     respond_to do |format|

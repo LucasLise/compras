@@ -19,6 +19,10 @@ module ApplicationHelper
     render 'shared/save_button'
   end
 
+  def index_footer(object)
+    render partial: 'shared/index_footer', locals: {object: object}
+  end
+
   private
 
   def link_icon_to(path, text, options = {})

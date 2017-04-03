@@ -5,7 +5,7 @@ class MarcasController < ApplicationController
   # GET /marcas
   # GET /marcas.json
   def index
-    @marcas = Marca.all
+    @marcas = index_and_respond Marca.all
     authorize @marcas
   end
 

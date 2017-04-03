@@ -1,9 +1,11 @@
+<div class="">
+  <h3><%= action_list Pedido %></h3><hr>
+</div>
 <div align='right' >
   <%= select_tag "recentes",
     raw("<option value='recentes'>Mais recentes</option><option value='velhos'>Menos recentes</option>"), class: 'btn btn-info',
                                                                                                             style: 'margin-left: 425px'%>
 </div><br>
-
 <div id="todos_pedidos">
   <% @pedidos.each do |pedido| %>
     <div class="panel panel-info">

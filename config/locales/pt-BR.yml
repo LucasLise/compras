@@ -10,6 +10,12 @@ pt-BR:
       marca:
         one: Marca
         other: Marcas
+      pedido:
+        one: Pedido
+        other: Pedidos
+      imagem:
+        one: Imagem
+        other: Imagens 
     attributes:
       produto:
         descricao: Descrição

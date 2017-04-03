@@ -54,16 +54,12 @@
         <% end %>
     </div>
   </div>
-
-
   <div class="col-md-9">
     <div class="row">
       <div class="panel-body" align='center' id='produtos'>
         <%= render partial:'produtos'%>
       </div>
-      <div align="center">
-        <%= will_paginate @produtos, renderer: BootstrapPagination::Rails%>
-      </div>
+      <%= index_footer @produtos %>
     </div>
   </div>
 </div>

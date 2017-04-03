@@ -1,5 +1,6 @@
 <%- model_class = Categoria -%>
 
+<h3><%= action_list Imagem %></h3><hr>
 <% Produto.all.each do |produto| %>
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -12,16 +13,16 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>
-                <div class="row">
-                  <div class="col-md-2">
-                    Imagem
-                  </div>
-                  <div class="col-md-10" align="">
-                    <%= link_to 'Nova Imagem',  edit_produto_path(produto), class:'btn btn-info'%>
-                  </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <h3>Imagem</h3>
                 </div>
-              </th>
+                <div class="col-md-10" align="">
+                  <h3>
+                    <%= link_to action_new_fem(Imagem),  edit_produto_path(produto), class:'btn btn-info'%>
+                  </h3>
+                </div>
+              </div>
             </tr>
           </thead>
           <tbody>

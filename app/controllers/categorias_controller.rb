@@ -7,6 +7,7 @@ class CategoriasController < ApplicationController
   def index
     @categorias = policy_scope(Categoria).all
     authorize @categorias
+    @categorias = index_and_respond @categorias
   end
 
   # GET /categorias/1

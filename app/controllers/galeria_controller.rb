@@ -4,7 +4,6 @@ class GaleriaController < ApplicationController
     def index
         @q = Produto.ransack(params[:q])
         @produtos = @q.result(distinct: true)
-        @produtos = @produtos.paginate(page: params[:page], per_page: 9)
 
         @produtos = if params[:ordem] == 'crescente'
                         @produtos.order(preco: :asc)
@@ -21,6 +20,8 @@ class GaleriaController < ApplicationController
             @marca = Marca.find(params[:buscar_marca])
             @produtos = @produtos.where(marca_id: @marca.id)
         end
+        
+        @produtos = index_and_respond @produtos
     end
 
     def todas_categorias
