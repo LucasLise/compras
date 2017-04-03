@@ -23,3 +23,10 @@
 //= require cocoon
 //= require jquery.elevatezoom
 //= require jquery.elevateZoom-3.0.8.min
+
+
+window.setTimeout(function() {
+    $(".alert").fadeTo().slideUp( function(){
+        $(this).remove();
+    });
+}, 4000);

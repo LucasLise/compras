@@ -6,7 +6,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body class="container">
     <% if current_user && current_user.admin? %>
       <%= render partial:'layouts/admin' %>
@@ -16,15 +15,15 @@
       <%= render partial:'layouts/nao_cliente' %>
     <%end%>
     <% if notice.present? %>
-      <div class="panel panel-info">
-        <div class="panel-heading">Informação</div>
-        <div class="panel-body"><%= notice %></div>
+      <div class="alert alert-info" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong><%= notice %></strong>
       </div>
     <% end %>
     <% if alert.present? %>
-      <div class="panel panel-danger" style="border-color: #ED5565;">
-        <div class="panel-heading"  style="background: #ED5565; color: white;">Atenção</div>
-        <div class="panel-body"><%= alert %></div>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong><%= alert %></strong>
       </div>
     <% end %>
     <%=yield%>
