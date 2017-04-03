@@ -15,7 +15,7 @@ pt-BR:
         other: Pedidos
       imagem:
         one: Imagem
-        other: Imagens 
+        other: Imagens
     attributes:
       produto:
         descricao: Descrição
@@ -51,3 +51,5 @@ pt-BR:
       show: Vizualizar
       destroy: Excluir
       save: Salvar
+  message:
+    permissao: 'Você não possui permissão para esta ação.'

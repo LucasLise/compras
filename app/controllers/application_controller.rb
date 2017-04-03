@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   include Pundit
   include ControllerResponder
-  
+
   protect_from_forgery
 
   protect_from_forgery with: :exception
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    flash[:alert] = "Você não possui permissão para esta ação."
+    flash[:alert] = t('message.permissao')
     redirect_to(request.referrer || root_path)
   end
 
