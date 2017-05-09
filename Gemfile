@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'elevatezoom-rails'
 
 gem "cocoon"
@@ -78,6 +80,7 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'sqlite3'
   gem 'simplecov', :require => false
+  gem 'awesome_print'
 end
 
 group :development do
